@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Advertisement;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
+use Illuminate\Http\RedirectResponse;
 
 class AdvertisementController extends Controller
 {
@@ -28,9 +29,16 @@ class AdvertisementController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(): RedirectResponse
     {
-        dd(1111111);
+        $data = request()->validate(
+            [
+                'title' => 'string',
+                'description' => 'string'
+            ]
+        );
+        Advertisement::create($data);
+        return redirect()->route('advertisement.index');
     }
 
     /**
