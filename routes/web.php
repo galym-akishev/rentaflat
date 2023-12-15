@@ -20,7 +20,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('advertisements', AdvertisementController::class);
+//Route::resource('advertisements', AdvertisementController::class);
 
-Route::get('/ads', [AdvertisementController::class, 'index']);
-Route::get('/ads/{id}', [AdvertisementController::class, 'show']);
+Route::get('/advertisements', 'AdvertisementController@index')->name('advertisement.index');

@@ -4,13 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Models\Advertisement;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class AdvertisementController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(): View
     {
         $advertisements = Advertisement::all();
         return view('advertisement.index', compact('advertisements'));
@@ -19,9 +20,9 @@ class AdvertisementController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(): View
     {
-        //
+        return view('advertisement.create');
     }
 
     /**
@@ -29,7 +30,7 @@ class AdvertisementController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd(1111111);
     }
 
     /**
