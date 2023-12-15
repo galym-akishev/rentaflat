@@ -1,5 +1,7 @@
 <?php
 
+
+use App\Http\Controllers\AdvertisementController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 
@@ -17,3 +19,8 @@ use Illuminate\Http\Request;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::resource('advertisements', AdvertisementController::class);
+
+Route::get('/ads', [AdvertisementController::class, 'index']);
+Route::get('/ads/{id}', [AdvertisementController::class, 'show']);
