@@ -14,6 +14,9 @@
                 <th scope="col" class="px-6 py-3">
                     Description
                 </th>
+                <th scope="col" class="px-6 py-3">
+                    Link
+                </th>
             </tr>
             </thead>
             <tbody>
@@ -28,7 +31,9 @@
                     <td class="px-6 py-4">
                         {{ $advertisement->description }}
                     </td>
-
+                    <td class="px-6 py-4">
+                        <a href="{{ route('advertisement.show', $advertisement->id) }}">Details</a>
+                    </td>
                 </tr>
             @endforeach
             </tbody>

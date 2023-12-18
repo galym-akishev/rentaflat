@@ -26,3 +26,11 @@ Route::get('/advertisements/create', [AdvertisementController::class, 'create'])
     ->name('advertisement.create');
 Route::post('/advertisements', [AdvertisementController::class, 'store'])
     ->name('advertisement.store');
+Route::get('/advertisements/{advertisement}', [AdvertisementController::class, 'show'])
+    ->name('advertisement.show');
+Route::get('/advertisements/{advertisement}/edit', [AdvertisementController::class, 'edit'])
+    ->name('advertisement.edit');
+Route::patch('/advertisements/{advertisement}', [AdvertisementController::class, 'update'])
+    ->name('advertisement.update');
+Route::delete('/advertisements/{advertisement}', [AdvertisementController::class, 'destroy'])
+    ->name('advertisement.delete');

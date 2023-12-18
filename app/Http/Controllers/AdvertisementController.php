@@ -44,32 +44,40 @@ class AdvertisementController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Advertisement $advertisement)
     {
-        //
+        return view('advertisement.show', compact('advertisement'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Advertisement $advertisement)
     {
-        //
+        return view('advertisement.edit', compact('advertisement'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Advertisement $advertisement)
     {
-        //
+        $data = request()->validate(
+            [
+                'title' => 'string',
+                'description' => 'string'
+            ]
+        );
+        $advertisement->update($data);
+        return redirect()->route('advertisement.show', $advertisement->id);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Advertisement $advertisement)
     {
-        //
+        $advertisement->delete();
+        return redirect()->route('advertisement.index');
     }
 }
