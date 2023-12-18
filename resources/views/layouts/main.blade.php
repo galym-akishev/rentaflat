@@ -1,44 +1,73 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-    <link rel="icon" type="image/x-icon" href="{{ Vite::asset('resources/images/favicon.png') }}">
-    <link rel="stylesheet" href="{{ asset('/css/app.css') }}">
-    <title>Rentaflat</title>
+    <meta charset="utf-8">
+
+    <title>Rentaflat - rent a flat</title>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Rentaflat - portfolio website on Laravel/PHP">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+
+    <link rel="shortcut icon" type="image/x-icon" href="{{ Vite::asset('resources/images/favicon.png') }}"/>
+
+    @vite(['resources/scss/app.scss', 'resources/js/app.js'])
+
+    <link rel="stylesheet" href="{{ Vite::asset('resources/plugins/bootstrap/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ Vite::asset('resources/plugins/Ionicons/css/ionicons.min.css') }}">
+    <link rel="stylesheet" href="{{ Vite::asset('resources/plugins/animate-css/animate.css') }}">
+    <link rel="stylesheet" href="{{ Vite::asset('resources/plugins/magnific-popup/magnific-popup.css') }}/">
+    <link rel="stylesheet" href="{{ Vite::asset('resources/plugins/slick/slick.css') }}">
 </head>
-<body>
-<nav class="bg-white border-gray-200 dark:bg-gray-900">
-    <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-        <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
-            <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Rentaflat</span>
-        </a>
-        <button data-collapse-toggle="navbar-default" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-default" aria-expanded="false">
-            <span class="sr-only">Open main menu</span>
-            <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
-            </svg>
-        </button>
-        <div class="hidden w-full md:block md:w-auto" id="navbar-default">
-            <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
-                <li>
-                    <a href="/" class="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white md:dark:text-blue-500" aria-current="page">Home</a>
-                </li>
-                <li>
-                    <a href="/advertisements" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Advertisements</a>
-                </li>
-                <li>
-                    <a href="/advertisements/create" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Create Ad</a>
-                </li>
-            </ul>
+
+<body id="body">
+
+<header class="navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <nav class="navbar navbar-expand-lg p-0">
+                    <a class="navbar-brand" href="/">
+                        <img src="{{ Vite::asset('resources/images/logo.png') }}" alt="Logo">
+                    </a>
+                    <button class="navbar-toggler collapsed" type="button" data-toggle="collapse"
+                            data-target="#navbarsExample09" aria-controls="navbarsExample09" aria-expanded="false"
+                            aria-label="Toggle navigation">
+                        <span class="ion-android-menu"></span>
+                    </button>
+                    <div class="collapse navbar-collapse ml-auto" id="navbar">
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" href="/">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('advertisement.index') }}">Advertisements</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('advertisement.create') }}">Create New Ad</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
         </div>
     </div>
-</nav>
+</header>
 
 @yield('content')
 
+<!-- Main jQuery -->
+<script src="{{ Vite::asset('resources/plugins/jquery/jquery.min.js') }}"></script>
+<!-- Bootstrap 3.1 -->
+<script src="{{ Vite::asset('resources/plugins/bootstrap/bootstrap.min.js') }}"></script>
+<!-- slick Carousel -->
+<script src="{{ Vite::asset('resources/plugins/slick/slick.min.js') }}"></script>
+<script src="{{ Vite::asset('resources/plugins/magnific-popup/jquery.magnific-popup.min.js') }}"></script>
+<!-- filter -->
+<script src="{{ Vite::asset('resources/plugins/shuffle/shuffle.min.js') }}"></script>
+<script src="{{ Vite::asset('resources/plugins/SyoTimer/jquery.syotimer.min.js') }}"></script>
+<script src="{{ Vite::asset('resources/js/script.js') }}"></script>
+
 </body>
+
 </html>
