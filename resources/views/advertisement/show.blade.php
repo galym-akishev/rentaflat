@@ -10,13 +10,16 @@
                         <div class="card-text"><b>Description:</b> {{ $advertisement->description }}</div>
                         <div class="card-text">
                             <b>Amenities:</b>
-                            <ul>
-                                @foreach($amenities as $amenity)
-                                    <li>{{ $amenity->title }}</li>
-                                @endforeach
-                            </ul>
+                            @if(count($amenities)>0)
+                                <ul>
+                                    @foreach($amenities as $amenity)
+                                        <li>{{ $amenity->title }}</li>
+                                    @endforeach
+                                </ul>
+                            @else
+                                No amenities available.
+                            @endif
                         </div>
-
                         <div class="d-flex mt-4">
                             <a
                                 href="{{ route('advertisement.edit', $advertisement->id) }}"

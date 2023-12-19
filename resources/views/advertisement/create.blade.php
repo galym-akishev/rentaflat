@@ -5,6 +5,13 @@
             <div class="col-12 text-wrap">
                 <h4 class="mt-2">Create a new advertisement</h4>
                 <div class="border border-light-subtle rounded-2">
+                    <div class="mx-3 mt-2">
+                        @if ($errors->any())
+                            @foreach ($errors->all() as $error)
+                                <div class="bg-info">{{$error}}</div>
+                            @endforeach
+                        @endif
+                    </div>
                     <form
                         action="{{ route('advertisement.store') }}"
                         method="post"
@@ -29,6 +36,22 @@
                                 class="form-control"
                                 placeholder=" "
                                 required/>
+                        </div>
+                        <div class="form-row mt-2">
+                            <label for="amenities"><b>Amenities:</b></label>
+                            @if(count($amenities)>0)
+                                @foreach($amenities as $amenity)
+                                    <div class="form-check">
+                                        <input class="form-check-input" name="amenities[]" type="checkbox"
+                                               value="{{ $amenity->id }}" id="checkbox-id-{{ $amenity->id }}">
+                                        <label class="form-check-label" for="checkbox-id-{{ $amenity->id }}">
+                                            {{ $amenity->title }}
+                                        </label>
+                                    </div>
+                                @endforeach
+                            @else
+                                No amenities to choose from.
+                            @endif
                         </div>
                         <button
                             type="submit"

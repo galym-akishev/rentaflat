@@ -32,6 +32,25 @@
                                 value="{{ $advertisement->description }}"
                                 required/>
                         </div>
+                        <div class="form-row mt-2">
+                            <label for="amenities"><b>Amenities:</b></label>
+                            @foreach($amenitiesAll as $amenityOption)
+                                <div class="form-check">
+                                    <input
+                                        class="form-check-input"
+                                        name="amenities[]"
+                                        type="checkbox"
+                                        value="{{ $amenityOption->id }}"
+                                        id="checkbox-id-{{ $amenityOption->id }}"
+                                        @if($amenitiesOfAdvertisement->contains($amenityOption))
+                                            checked
+                                        @endif >
+                                    <label class="form-check-label" for="checkbox-id-{{ $amenityOption->id }}">
+                                        {{ $amenityOption->title }}
+                                    </label>
+                                </div>
+                            @endforeach
+                        </div>
                         <button
                             type="submit"
                             class="btn btn-info mb-2 mt-4">

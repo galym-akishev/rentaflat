@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Advertisement;
+use App\Models\Amenity;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
@@ -23,7 +24,8 @@ class AdvertisementController extends Controller
      */
     public function create(): View
     {
-        return view('advertisement.create');
+        $amenities = Amenity::all();
+        return view('advertisement.create', compact('amenities'));
     }
 
     /**
@@ -34,10 +36,16 @@ class AdvertisementController extends Controller
         $data = request()->validate(
             [
                 'title' => 'string',
-                'description' => 'string'
+                'description' => 'string',
+                'amenities' => 'array',
+                'amenities.*' => 'string'
             ]
         );
-        Advertisement::create($data);
+        if (!empty($data['amenities'])) {
+            Advertisement::create($data)->amenities()->attach($data['amenities']);
+        } else {
+            Advertisement::create($data);
+        }
         return redirect()->route('advertisement.index');
     }
 
@@ -46,7 +54,7 @@ class AdvertisementController extends Controller
      */
     public function show(Advertisement $advertisement)
     {
-        $amenities = $advertisement->amenities()->get(['title']);
+        $amenities = $advertisement->amenities()->get();
         return view('advertisement.show', compact('advertisement', 'amenities'));
     }
 
@@ -55,7 +63,12 @@ class AdvertisementController extends Controller
      */
     public function edit(Advertisement $advertisement)
     {
-        return view('advertisement.edit', compact('advertisement'));
+        $amenitiesAll = Amenity::all();
+        $amenitiesOfAdvertisement = $advertisement->amenities()->get();
+        return view(
+            'advertisement.edit',
+            compact('advertisement', 'amenitiesAll', 'amenitiesOfAdvertisement')
+        );
     }
 
     /**
@@ -66,10 +79,17 @@ class AdvertisementController extends Controller
         $data = request()->validate(
             [
                 'title' => 'string',
-                'description' => 'string'
+                'description' => 'string',
+                'amenities' => 'array',
+                'amenities.*' => 'string'
             ]
         );
         $advertisement->update($data);
+        if (!empty($data['amenities'])) {
+            $advertisement->amenities()->sync($data['amenities']);
+        } else {
+            $advertisement->amenities()->sync([]);
+        }
         return redirect()->route('advertisement.show', $advertisement->id);
     }
 
@@ -81,5 +101,4 @@ class AdvertisementController extends Controller
         $advertisement->delete();
         return redirect()->route('advertisement.index');
     }
-
 }

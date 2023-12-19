@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use App\Models\Amenity;
 
 /**
  * Advertisement
@@ -41,6 +40,10 @@ class Advertisement extends Model
 
     public function amenities()
     {
-        return $this->belongsToMany('App\Models\Amenity');
+        return $this->belongsToMany(
+            Amenity::class,
+            'advertisement_amenity',
+            'advertisement_id',
+            'amenity_id');
     }
 }

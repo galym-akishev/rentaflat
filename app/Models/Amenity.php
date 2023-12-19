@@ -23,4 +23,13 @@ class Amenity extends Model
      * @var array
      */
     protected $dates = ['created_at', 'updated_at', 'deleted_at'];
+
+    public function advertisements()
+    {
+        return $this->belongsToMany(
+            Advertisement::class,
+            'advertisement_amenity',
+            'amenity_id',
+            'advertisement_id');
+    }
 }
