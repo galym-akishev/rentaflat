@@ -5,11 +5,19 @@
             <div class="col-12">
                 <h4 class="mt-2">Details of the advertisement</h4>
                 <div class="card">
-{{--                    <img class="card-img-top" style="width: 3rem;" src="{{ Vite::asset('resources/images/favicon.png') }}" alt="Card image cap">--}}
                     <div class="card-body">
-                        <p class="card-title"><b>Title:</b> {{ $advertisement->title }}</p>
-                        <p class="card-text"><b>Description:</b> {{ $advertisement->description }}</p>
-                        <div class="d-flex">
+                        <div class="card-title"><b>Title:</b> {{ $advertisement->title }}</div>
+                        <div class="card-text"><b>Description:</b> {{ $advertisement->description }}</div>
+                        <div class="card-text">
+                            <b>Amenities:</b>
+                            <ul>
+                                @foreach($amenities as $amenity)
+                                    <li>{{ $amenity->title }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+
+                        <div class="d-flex mt-4">
                             <a
                                 href="{{ route('advertisement.edit', $advertisement->id) }}"
                                 class="btn btn-info mb-1 me-1">
