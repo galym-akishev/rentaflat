@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Models\Amenity;
 
 /**
  * Advertisement
@@ -37,4 +38,9 @@ class Advertisement extends Model
      * @var array
      */
     protected $dates = ['created_at', 'updated_at', 'deleted_at'];
+
+    public function amenities()
+    {
+        return $this->belongsToMany('App\Models\Amenity');
+    }
 }

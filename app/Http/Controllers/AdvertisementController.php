@@ -80,4 +80,5 @@ class AdvertisementController extends Controller
         $advertisement->delete();
         return redirect()->route('advertisement.index');
     }
+
 }

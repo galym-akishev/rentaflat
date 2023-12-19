@@ -9,7 +9,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Amenity extends Model
 {
     use HasFactory;
-    use SoftDeletes;
 
     /**
      * The attributes that aren't mass assignable.

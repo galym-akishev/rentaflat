@@ -17,8 +17,6 @@ return new class extends Migration
                 ->unique()
                 ->nullable(false);
             $table->timestamps();
-
-            $table->softDeletes();
         });
     }
 

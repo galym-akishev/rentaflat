@@ -2,6 +2,7 @@
 
 
 use App\Http\Controllers\AdvertisementController;
+use App\Http\Controllers\AmenityController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 
@@ -34,3 +35,18 @@ Route::patch('/advertisements/{advertisement}', [AdvertisementController::class,
     ->name('advertisement.update');
 Route::delete('/advertisements/{advertisement}', [AdvertisementController::class, 'destroy'])
     ->name('advertisement.delete');
+
+Route::get('/amenities', [AmenityController::class, 'index' ])
+    ->name('amenity.index');
+Route::get('/amenities/create', [AmenityController::class, 'create'])
+    ->name('amenity.create');
+Route::post('/amenities', [AmenityController::class, 'store'])
+    ->name('amenity.store');
+Route::get('/amenities/{amenity}', [AmenityController::class, 'show'])
+    ->name('amenity.show');
+Route::get('/amenities/{amenity}/edit', [AmenityController::class, 'edit'])
+    ->name('amenity.edit');
+Route::patch('/amenities/{amenity}', [AmenityController::class, 'update'])
+    ->name('amenity.update');
+Route::delete('/amenities/{amenity}', [AmenityController::class, 'destroy'])
+    ->name('amenity.delete');
