@@ -38,7 +38,7 @@
                             Update
                         </button>
                         <a
-                            href="{{ route('advertisement.index') }}"
+                            href="{{ route('advertisement.show', $advertisement->id) }}"
                             class="btn btn-info mb-2 mt-4"
                         >
                             Back
