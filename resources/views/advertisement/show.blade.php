@@ -3,12 +3,12 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <h1>Details of the advertisement:</h1>
+                <h4 class="mt-2">Details of the advertisement</h4>
                 <div class="card">
-                    <img class="card-img-top" style="width: 3rem;" src="{{ Vite::asset('resources/images/favicon.png') }}" alt="Card image cap">
+{{--                    <img class="card-img-top" style="width: 3rem;" src="{{ Vite::asset('resources/images/favicon.png') }}" alt="Card image cap">--}}
                     <div class="card-body">
-                        <h5 class="card-title">Title: {{ $advertisement->title }}</h5>
-                        <p class="card-text">Description: {{ $advertisement->description }}</p>
+                        <p class="card-title"><b>Title:</b> {{ $advertisement->title }}</p>
+                        <p class="card-text"><b>Description:</b> {{ $advertisement->description }}</p>
                         <div class="d-flex">
                             <a
                                 href="{{ route('advertisement.edit', $advertisement->id) }}"
