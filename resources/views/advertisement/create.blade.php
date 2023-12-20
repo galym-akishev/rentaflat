@@ -12,6 +12,9 @@
                             @endforeach
                         @endif
                     </div>
+                    @error('files')
+                    <span class="text-danger">{{ $message }}</span>
+                    @enderror
                     <form
                         action="{{ route('advertisement.store') }}"
                         method="post"

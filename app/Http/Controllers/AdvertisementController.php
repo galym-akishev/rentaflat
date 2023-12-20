@@ -52,7 +52,6 @@ class AdvertisementController extends Controller
                 $files[]['name'] = $file_name;
             }
         }
-
         if (!empty($data['amenities'])) {
             $advertisement = Advertisement::create($data);
             $advertisement->amenities()->attach($data['amenities']);
@@ -91,9 +90,10 @@ class AdvertisementController extends Controller
     {
         $amenitiesAll = Amenity::all();
         $amenitiesOfAdvertisement = $advertisement->amenities()->get();
+        $files = $advertisement->files()->get();
         return view(
             'advertisement.edit',
-            compact('advertisement', 'amenitiesAll', 'amenitiesOfAdvertisement')
+            compact('advertisement', 'amenitiesAll', 'amenitiesOfAdvertisement', 'files')
         );
     }
 
@@ -108,10 +108,25 @@ class AdvertisementController extends Controller
                 'description' => 'string',
                 'price' => 'string',
                 'amenities' => 'array',
-                'amenities.*' => 'string'
+                'amenities.*' => 'string',
+                'files' => 'nullable',
+                'files.*' => 'nullable|mimes:jpeg,bmp,png,jpg|max:2048'
             ]
         );
+        $files = [];
+        if (request()->file('files')) {
+            foreach (request()->file('files') as $key => $file) {
+                $file_name = time() . rand(1, 99) . '.' . $file->extension();
+                $file->move(public_path('uploads'), $file_name);
+                $files[]['name'] = $file_name;
+            }
+        }
         $advertisement->update($data);
+        if (!empty($files))
+        {
+            $advertisement->files()->delete();
+            $advertisement->files()->createMany($files);
+        }
         if (!empty($data['amenities'])) {
             $advertisement->amenities()->sync($data['amenities']);
         } else {
