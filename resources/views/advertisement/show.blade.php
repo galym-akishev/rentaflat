@@ -10,27 +10,29 @@
                         <div class="card-title">
                             <b>Title:</b> {{ $advertisement->title }}
                         </div>
-                        <div id="carouselControls" class="carousel slide" data-bs-ride="carousel">
-                            <div class="carousel-inner">
-                                @foreach($files as $file)
-                                    @if ($loop->first)
-                                        <div class="carousel-item active">
-                                            <img class="d-block mx-auto" height="200" src="{{ Vite::asset('public/uploads/'. $file->name) }}" alt="{{ $file->name }}">
-                                        </div>
-                                    @else
-                                        <div class="carousel-item">
-                                            <img class="d-block mx-auto" height="200" src="{{ Vite::asset('public/uploads/'. $file->name) }}" alt="{{ $file->name }}">
-                                        </div>
-                                    @endif
-                                @endforeach
+                        @if(count($files)>0)
+                            <div id="carouselControls" class="carousel slide" data-bs-ride="carousel">
+                                <div class="carousel-inner">
+                                    @foreach($files as $file)
+                                        @if ($loop->first)
+                                            <div class="carousel-item active">
+                                                <img class="d-block mx-auto" height="200" src="{{ Vite::asset('public/uploads/'. $file->name) }}" alt="{{ $file->name }}">
+                                            </div>
+                                        @else
+                                            <div class="carousel-item">
+                                                <img class="d-block mx-auto" height="200" src="{{ Vite::asset('public/uploads/'. $file->name) }}" alt="{{ $file->name }}">
+                                            </div>
+                                        @endif
+                                    @endforeach
+                                </div>
+                                <a class="carousel-control-prev" href="#carouselControls" role="button" data-bs-slide="prev">
+                                    <span class="carousel-control-prev-icon text-bg-info opacity-50" aria-hidden="true"></span>
+                                </a>
+                                <a class="carousel-control-next" href="#carouselControls" role="button" data-bs-slide="next">
+                                    <span class="carousel-control-next-icon text-bg-info opacity-50" aria-hidden="true"></span>
+                                </a>
                             </div>
-                            <a class="carousel-control-prev" href="#carouselControls" role="button" data-bs-slide="prev">
-                                <span class="carousel-control-prev-icon text-bg-info opacity-50" aria-hidden="true"></span>
-                            </a>
-                            <a class="carousel-control-next" href="#carouselControls" role="button" data-bs-slide="next">
-                                <span class="carousel-control-next-icon text-bg-info opacity-50" aria-hidden="true"></span>
-                            </a>
-                        </div>
+                        @endif
                         <div class="card-text">
                             <b>Description:</b>
                             {{ $advertisement->description }}

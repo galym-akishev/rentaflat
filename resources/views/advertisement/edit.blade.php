@@ -70,38 +70,40 @@
                                 value="{{ $advertisement->price }}"
                                 required/>
                         </div>
-                        <div class="mt-2">
-                            <div>
-                                <b>Currently Attached Files:</b>
-                                <div id="carouselControls" class="carousel slide" data-bs-ride="carousel">
-                                    <div class="carousel-inner">
-                                        @foreach($files as $file)
-                                            @if ($loop->first)
-                                                <div class="carousel-item active">
-                                                    <img class="d-block mx-auto" height="200" src="{{ Vite::asset('public/uploads/'. $file->name) }}" alt="{{ $file->name }}">
-                                                </div>
-                                            @else
-                                                <div class="carousel-item">
-                                                    <img class="d-block mx-auto" height="200" src="{{ Vite::asset('public/uploads/'. $file->name) }}" alt="{{ $file->name }}">
-                                                </div>
-                                            @endif
-                                        @endforeach
+                        @if(count($files)>0)
+                            <div class="mt-2">
+                                <div>
+                                    <b>Currently Attached Files:</b>
+                                    <div id="carouselControls" class="carousel slide" data-bs-ride="carousel">
+                                        <div class="carousel-inner">
+                                            @foreach($files as $file)
+                                                @if ($loop->first)
+                                                    <div class="carousel-item active">
+                                                        <img class="d-block mx-auto" height="200" src="{{ Vite::asset('public/uploads/'. $file->name) }}" alt="{{ $file->name }}">
+                                                    </div>
+                                                @else
+                                                    <div class="carousel-item">
+                                                        <img class="d-block mx-auto" height="200" src="{{ Vite::asset('public/uploads/'. $file->name) }}" alt="{{ $file->name }}">
+                                                    </div>
+                                                @endif
+                                            @endforeach
+                                        </div>
+                                        <a class="carousel-control-prev" href="#carouselControls" role="button" data-bs-slide="prev">
+                                            <span class="carousel-control-prev-icon text-bg-info opacity-50" aria-hidden="true"></span>
+                                        </a>
+                                        <a class="carousel-control-next" href="#carouselControls" role="button" data-bs-slide="next">
+                                            <span class="carousel-control-next-icon text-bg-info opacity-50" aria-hidden="true"></span>
+                                        </a>
                                     </div>
-                                    <a class="carousel-control-prev" href="#carouselControls" role="button" data-bs-slide="prev">
-                                        <span class="carousel-control-prev-icon text-bg-info opacity-50" aria-hidden="true"></span>
-                                    </a>
-                                    <a class="carousel-control-next" href="#carouselControls" role="button" data-bs-slide="next">
-                                        <span class="carousel-control-next-icon text-bg-info opacity-50" aria-hidden="true"></span>
-                                    </a>
                                 </div>
+                                <label class="form-label"><b>Select New Files to Update All of the Existing Files:</b></label>
+                                <input type="file" name="files[]" multiple
+                                       class="form-control @error('files') is-invalid @enderror">
+                                @error('files')
+                                <span class="text-danger">{{ $message }}</span>
+                                @enderror
                             </div>
-                            <label class="form-label"><b>Select New Files to Update All of the Existing Files:</b></label>
-                            <input type="file" name="files[]" multiple
-                                   class="form-control @error('files') is-invalid @enderror">
-                            @error('files')
-                            <span class="text-danger">{{ $message }}</span>
-                            @enderror
-                        </div>
+                        @endif
                         <button
                             type="submit"
                             class="btn btn-info mb-2 mt-4">
