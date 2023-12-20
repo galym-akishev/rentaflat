@@ -15,6 +15,7 @@
                     <form
                         action="{{ route('advertisement.store') }}"
                         method="post"
+                        enctype="multipart/form-data"
                         class="mx-3">
                         @csrf
                         <div class="form-row mt-2">
@@ -38,6 +39,16 @@
                                 required/>
                         </div>
                         <div class="form-row mt-2">
+                            <label for="price"><b>Price:</b></label>
+                            <input
+                                type="text"
+                                name="price"
+                                id="price"
+                                class="form-control"
+                                placeholder=" "
+                                required/>
+                        </div>
+                        <div class="form-row mt-2">
                             <label for="amenities"><b>Amenities:</b></label>
                             @if(count($amenities)>0)
                                 @foreach($amenities as $amenity)
@@ -52,6 +63,14 @@
                             @else
                                 No amenities to choose from.
                             @endif
+                        </div>
+                        <div class="mt-2">
+                            <label class="form-label"><b>Select Files:</b></label>
+                            <input type="file" name="files[]" multiple
+                                   class="form-control @error('files') is-invalid @enderror">
+                            @error('files')
+                            <span class="text-danger">{{ $message }}</span>
+                            @enderror
                         </div>
                         <button
                             type="submit"

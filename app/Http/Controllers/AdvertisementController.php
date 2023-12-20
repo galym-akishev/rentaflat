@@ -37,25 +37,51 @@ class AdvertisementController extends Controller
             [
                 'title' => 'string',
                 'description' => 'string',
+                'price' => 'string',
                 'amenities' => 'array',
-                'amenities.*' => 'string'
+                'amenities.*' => 'string',
+                'files' => 'required',
+                'files.*' => 'required|mimes:jpeg,bmp,png,jpg|max:2048'
             ]
         );
-        if (!empty($data['amenities'])) {
-            Advertisement::create($data)->amenities()->attach($data['amenities']);
-        } else {
-            Advertisement::create($data);
+        $files = [];
+        if (request()->file('files')) {
+            foreach (request()->file('files') as $key => $file) {
+                $file_name = time() . rand(1, 99) . '.' . $file->extension();
+                $file->move(public_path('uploads'), $file_name);
+                $files[]['name'] = $file_name;
+            }
         }
+
+        if (!empty($data['amenities'])) {
+            $advertisement = Advertisement::create($data);
+            $advertisement->amenities()->attach($data['amenities']);
+        } else {
+            $advertisement = Advertisement::create($data);
+        }
+        $advertisement->files()->createMany($files);
+        $advertisement
+            ->amenities()
+            ->updateExistingPivot(
+                $advertisement->amenities()->allRelatedIds(),
+                [
+                    'created_at' => now()
+                ]
+            );
         return redirect()->route('advertisement.index');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Advertisement $advertisement)
+    public function show(Advertisement $advertisement): View
     {
         $amenities = $advertisement->amenities()->get();
-        return view('advertisement.show', compact('advertisement', 'amenities'));
+        $files = $advertisement->files()->get();
+        return view(
+            'advertisement.show',
+            compact('advertisement', 'amenities', 'files')
+        );
     }
 
     /**
@@ -80,6 +106,7 @@ class AdvertisementController extends Controller
             [
                 'title' => 'string',
                 'description' => 'string',
+                'price' => 'string',
                 'amenities' => 'array',
                 'amenities.*' => 'string'
             ]
@@ -90,6 +117,14 @@ class AdvertisementController extends Controller
         } else {
             $advertisement->amenities()->sync([]);
         }
+        $advertisement
+            ->amenities()
+            ->updateExistingPivot(
+                $advertisement->amenities()->allRelatedIds(),
+                [
+                    'updated_at' => now()
+                ]
+            );
         return redirect()->route('advertisement.show', $advertisement->id);
     }
 
@@ -98,6 +133,15 @@ class AdvertisementController extends Controller
      */
     public function destroy(Advertisement $advertisement)
     {
+        $advertisement
+            ->amenities()
+            ->updateExistingPivot(
+                $advertisement->amenities()->allRelatedIds(),
+                [
+                    'deleted_at' => now()
+                ]
+            );
+        $advertisement->files()->delete();
         $advertisement->delete();
         return redirect()->route('advertisement.index');
     }

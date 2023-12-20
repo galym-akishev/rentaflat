@@ -4,13 +4,17 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class AdvertisementAmenity extends Model
+class File extends Model
 {
     use HasFactory;
     use SoftDeletes;
+
+    protected $fillable = [
+        'name'
+    ];
 
     /**
      * The attributes that aren't mass assignable.
@@ -26,13 +30,8 @@ class AdvertisementAmenity extends Model
      */
     protected $dates = ['created_at', 'updated_at', 'deleted_at'];
 
-    public function advertisements(): HasMany
+    public function advertisements(): BelongsTo
     {
-        return $this->hasMany(Advertisement::class);
-    }
-
-    public function amenities(): HasMany
-    {
-        return $this->hasMany(Amenity::class);
+        return $this->belongsTo(Advertisement::class);
     }
 }

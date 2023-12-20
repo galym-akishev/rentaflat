@@ -22,11 +22,11 @@ return new class extends Migration {
             $table->foreign('advertisement_id')
                 ->on('advertisements')
                 ->references('id')
-                ->onDelete('cascade') ;
+                ->onDelete('cascade');
             $table->foreign('amenity_id')
                 ->on('amenities')
                 ->references('id')
-                ->onDelete('cascade') ;
+                ->onDelete('cascade');
 
             $table->timestamps();
 

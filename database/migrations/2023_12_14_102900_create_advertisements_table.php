@@ -14,6 +14,8 @@ return new class extends Migration {
             $table->id();
             $table->string('title')->nullable(false);
             $table->string('description')->nullable(false);
+            $table->string('price')->nullable(false);
+
             $table->timestamps();
 
             $table->softDeletes();

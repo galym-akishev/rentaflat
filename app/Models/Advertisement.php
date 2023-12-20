@@ -5,7 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
+
 
 /**
  * Advertisement
@@ -22,7 +24,11 @@ class Advertisement extends Model
      *
      * @var array
      */
-    protected $fillable = ['title', 'description'];
+    protected $fillable = [
+        'title',
+        'description',
+        'price'
+    ];
 
     /**
      * The attributes that aren't mass assignable.
@@ -45,5 +51,10 @@ class Advertisement extends Model
             'advertisement_amenity',
             'advertisement_id',
             'amenity_id');
+    }
+
+    public function files(): HasMany
+    {
+        return $this->hasMany(File::class);
     }
 }

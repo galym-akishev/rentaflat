@@ -10,9 +10,19 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('comments', function (Blueprint $table) {
+        Schema::create('files', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->unsignedBigInteger('advertisement_id');
+
             $table->timestamps();
+
+            $table->index('advertisement_id', 'advertisement_advertisement_idx');
+
+            $table->foreign('advertisement_id')
+                ->references('id')
+                ->on('advertisements')
+                ->onDelete('cascade');
 
             $table->softDeletes();
         });
@@ -23,6 +33,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('comments');
+        Schema::dropIfExists('files');
     }
 };

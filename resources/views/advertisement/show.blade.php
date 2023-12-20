@@ -4,14 +4,41 @@
         <div class="row">
             <div class="col-12">
                 <h4 class="mt-2">Details of the advertisement</h4>
+
                 <div class="card">
                     <div class="card-body">
-                        <div class="card-title"><b>Title:</b> {{ $advertisement->title }}</div>
-                        <div class="card-text"><b>Description:</b> {{ $advertisement->description }}</div>
+                        <div class="card-title">
+                            <b>Title:</b> {{ $advertisement->title }}
+                        </div>
+                        <div id="carouselControls" class="carousel slide" data-bs-ride="carousel">
+                            <div class="carousel-inner">
+                                @foreach($files as $file)
+                                    @if ($loop->first)
+                                        <div class="carousel-item active">
+                                            <img class="d-block mx-auto" height="200" src="{{ Vite::asset('public/uploads/'. $file->name) }}" alt="{{ $file->name }}">
+                                        </div>
+                                    @else
+                                        <div class="carousel-item">
+                                            <img class="d-block mx-auto" height="200" src="{{ Vite::asset('public/uploads/'. $file->name) }}" alt="{{ $file->name }}">
+                                        </div>
+                                    @endif
+                                @endforeach
+                            </div>
+                            <a class="carousel-control-prev" href="#carouselControls" role="button" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon text-bg-info opacity-50" aria-hidden="true"></span>
+                            </a>
+                            <a class="carousel-control-next" href="#carouselControls" role="button" data-bs-slide="next">
+                                <span class="carousel-control-next-icon text-bg-info opacity-50" aria-hidden="true"></span>
+                            </a>
+                        </div>
+                        <div class="card-text">
+                            <b>Description:</b>
+                            {{ $advertisement->description }}
+                        </div>
                         <div class="card-text">
                             <b>Amenities:</b>
                             @if(count($amenities)>0)
-                                <ul>
+                                <ul class="mb-0">
                                     @foreach($amenities as $amenity)
                                         <li>{{ $amenity->title }}</li>
                                     @endforeach
@@ -19,6 +46,10 @@
                             @else
                                 No amenities available.
                             @endif
+                        </div>
+                        <div class="card-text">
+                            <b>Price:</b>
+                            {{ $advertisement->price }}
                         </div>
                         <div class="d-flex mt-4">
                             <a

@@ -51,6 +51,17 @@
                                 </div>
                             @endforeach
                         </div>
+                        <div class="form-row mt-2">
+                            <label for="price"><b>Price:</b></label>
+                            <input
+                                type="text"
+                                name="price"
+                                id="price"
+                                class="form-control"
+                                placeholder=" "
+                                value="{{ $advertisement->price }}"
+                                required/>
+                        </div>
                         <button
                             type="submit"
                             class="btn btn-info mb-2 mt-4">
