@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers\Amenity;
 
-use App\Http\Controllers\Controller;
 use App\Models\Amenity;
 
-class DestroyController extends Controller
+class DestroyController extends BaseController
 {
     public function __invoke(Amenity $amenity)
     {

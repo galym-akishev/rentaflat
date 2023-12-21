@@ -2,19 +2,16 @@
 
 namespace App\Http\Controllers\Amenity;
 
-use App\Http\Controllers\Controller;
+use App\Http\Requests\Amenity\StoreRequest;
 use App\Models\Amenity;
 
-class StoreController extends Controller
+class StoreController extends BaseController
 {
-    public function __invoke()
+    public function __invoke(StoreRequest $request)
     {
-        $data = request()->validate(
-            [
-                'title' => 'string',
-            ]
-        );
+        $data = $request->validated();
         Amenity::create($data);
+        
         return redirect()->route('amenity.index');
     }
 }
