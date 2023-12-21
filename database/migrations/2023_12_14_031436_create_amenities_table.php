@@ -13,7 +13,6 @@ return new class extends Migration {
         Schema::create('amenities', function (Blueprint $table) {
             $table->id();
             $table->string('title')
-                ->unique()
                 ->nullable(false);
 
             $table->timestamps();

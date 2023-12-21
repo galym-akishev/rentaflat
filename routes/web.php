@@ -1,8 +1,13 @@
 <?php
 
 
-use App\Http\Controllers\AdvertisementController;
-use App\Http\Controllers\AmenityController;
+use App\Http\Controllers\Advertisement\CreateController;
+use App\Http\Controllers\Advertisement\DestroyController;
+use App\Http\Controllers\Advertisement\EditController;
+use App\Http\Controllers\Advertisement\IndexController;
+use App\Http\Controllers\Advertisement\ShowController;
+use App\Http\Controllers\Advertisement\StoreController;
+use App\Http\Controllers\Advertisement\UpdateController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -19,41 +24,56 @@ use Illuminate\Http\Request;
 |
 */
 
-//Route::get('/', function () {
-//    return view('welcome');
+Route::get('/', function () {
+    return view('welcome');
+});
+
+//Route::get('/admin', function () {
+//    return view('admin');
 //});
 
-Route::get('/', [HomeController::class, 'index']);
+//Route::group(['namespace'=>'Admin', 'prefix'=>'admin'], function () {
+//    Route::group(['namespace'=>'Advertisement'], function (
+//        Route::get('/advertisement', [IndexController::class])->name('admin.advertisement.index');
+//    )
+//});
 
-Route::get('/advertisements', [AdvertisementController::class, 'index' ])
-    ->name('advertisement.index');
-Route::get('/advertisements/create', [AdvertisementController::class, 'create'])
-    ->name('advertisement.create');
-Route::post('/advertisements', [AdvertisementController::class, 'store'])
-    ->name('advertisement.store');
-Route::get('/advertisements/{advertisement}', [AdvertisementController::class, 'show'])
-    ->name('advertisement.show');
-Route::get('/advertisements/{advertisement}/edit', [AdvertisementController::class, 'edit'])
-    ->name('advertisement.edit');
-Route::patch('/advertisements/{advertisement}', [AdvertisementController::class, 'update'])
-    ->name('advertisement.update');
-Route::delete('/advertisements/{advertisement}', [AdvertisementController::class, 'destroy'])
-    ->name('advertisement.delete');
+//Route::get('/admin', [HomeController::class, 'index']);
 
-Route::get('/amenities', [AmenityController::class, 'index' ])
-    ->name('amenity.index');
-Route::get('/amenities/create', [AmenityController::class, 'create'])
-    ->name('amenity.create');
-Route::post('/amenities', [AmenityController::class, 'store'])
-    ->name('amenity.store');
-Route::get('/amenities/{amenity}', [AmenityController::class, 'show'])
-    ->name('amenity.show');
-Route::get('/amenities/{amenity}/edit', [AmenityController::class, 'edit'])
-    ->name('amenity.edit');
-Route::patch('/amenities/{amenity}', [AmenityController::class, 'update'])
-    ->name('amenity.update');
-Route::delete('/amenities/{amenity}', [AmenityController::class, 'destroy'])
-    ->name('amenity.delete');
+Route::group(['namespace' => 'Advertisement'], function () {
+    Route::get('/advertisements', 'IndexController')
+        ->name('advertisement.index');
+    Route::get('/advertisements/create', 'CreateController')
+        ->name('advertisement.create');
+    Route::post('/advertisements', 'StoreController')
+        ->name('advertisement.store');
+    Route::get('/advertisements/{advertisement}', 'ShowController')
+        ->name('advertisement.show');
+    Route::get('/advertisements/{advertisement}/edit', 'EditController')
+        ->name('advertisement.edit');
+    Route::patch('/advertisements/{advertisement}', 'UpdateController')
+        ->name('advertisement.update');
+    Route::delete('/advertisements/{advertisement}', 'DestroyController')
+        ->name('advertisement.delete');
+});
+
+Route::group(['namespace' => 'Amenity'], function () {
+    Route::get('/amenities', 'IndexController')
+        ->name('amenity.index');
+    Route::get('/amenities/create', 'CreateController')
+        ->name('amenity.create');
+    Route::post('/amenities', 'StoreController')
+        ->name('amenity.store');
+    Route::get('/amenities/{amenity}', 'ShowController')
+        ->name('amenity.show');
+    Route::get('/amenities/{amenity}/edit', 'EditController')
+        ->name('amenity.edit');
+    Route::patch('/amenities/{amenity}', 'UpdateController')
+        ->name('amenity.update');
+    Route::delete('/amenities/{amenity}', 'DestroyController')
+        ->name('amenity.delete');
+});
+
 
 Auth::routes();
 
