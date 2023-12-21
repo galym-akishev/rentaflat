@@ -1,17 +1,8 @@
 <?php
 
 
-use App\Http\Controllers\Advertisement\CreateController;
-use App\Http\Controllers\Advertisement\DestroyController;
-use App\Http\Controllers\Advertisement\EditController;
-use App\Http\Controllers\Advertisement\IndexController;
-use App\Http\Controllers\Advertisement\ShowController;
-use App\Http\Controllers\Advertisement\StoreController;
-use App\Http\Controllers\Advertisement\UpdateController;
-use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,18 +18,6 @@ use Illuminate\Http\Request;
 Route::get('/', function () {
     return view('welcome');
 });
-
-//Route::get('/admin', function () {
-//    return view('admin');
-//});
-
-//Route::group(['namespace'=>'Admin', 'prefix'=>'admin'], function () {
-//    Route::group(['namespace'=>'Advertisement'], function (
-//        Route::get('/advertisement', [IndexController::class])->name('admin.advertisement.index');
-//    )
-//});
-
-//Route::get('/admin', [HomeController::class, 'index']);
 
 Route::group(['namespace' => 'Advertisement'], function () {
     Route::get('/advertisements', 'IndexController')

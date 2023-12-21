@@ -8,7 +8,8 @@ class DestroyController extends BaseController
 {
     public function __invoke(Amenity $amenity)
     {
-        $amenity->delete();
+        $this->service->destroy($amenity);
+        
         return redirect()->route('amenity.index');
     }
 }

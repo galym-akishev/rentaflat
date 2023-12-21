@@ -10,8 +10,8 @@ class UpdateController extends BaseController
     public function __invoke(Amenity $amenity, UpdateRequest $request)
     {
         $data = $request->validated();
-        $amenity->update($data);
-        
+        $this->service->update($amenity, $data);
+
         return redirect()->route('amenity.show', $amenity->id);
     }
 }
