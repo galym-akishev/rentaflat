@@ -3,6 +3,8 @@
 
 use App\Http\Controllers\AdvertisementController;
 use App\Http\Controllers\AmenityController;
+use App\Http\Controllers\HomeController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 
@@ -17,9 +19,11 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::get('/', function () {
+//    return view('welcome');
+//});
+
+Route::get('/', [HomeController::class, 'index']);
 
 Route::get('/advertisements', [AdvertisementController::class, 'index' ])
     ->name('advertisement.index');
@@ -50,3 +54,7 @@ Route::patch('/amenities/{amenity}', [AmenityController::class, 'update'])
     ->name('amenity.update');
 Route::delete('/amenities/{amenity}', [AmenityController::class, 'destroy'])
     ->name('amenity.delete');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
