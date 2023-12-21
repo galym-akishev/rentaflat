@@ -2,15 +2,12 @@
 
 namespace App\Http\Controllers\Advertisement;
 
-use App\Http\Controllers\Controller;
-use App\Models\Advertisement;
-use App\Models\Amenity;
-
-class CreateController extends Controller
+class CreateController extends BaseController
 {
     public function __invoke()
     {
-        $amenities = Amenity::all();
+        $amenities = $this->service->getAllAmenities();
+
         return view('advertisement.create', compact('amenities'));
     }
 }

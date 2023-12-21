@@ -2,20 +2,24 @@
 
 namespace App\Http\Controllers\Advertisement;
 
-use App\Http\Controllers\Controller;
 use App\Models\Advertisement;
-use App\Models\Amenity;
 
-class EditController extends Controller
+class EditController extends BaseController
 {
     public function __invoke(Advertisement $advertisement)
     {
-        $amenitiesAll = Amenity::all();
-        $amenitiesOfAdvertisement = $advertisement->amenities()->get();
-        $files = $advertisement->files()->get();
+        $amenitiesAll = $this->service->getAllAmenities();
+        $amenitiesOfAdvertisement = $this->service->getAmenitiesOfAdvertisement($advertisement);
+        $files = $this->service->getFilesOfAdvertisement($advertisement);
+
         return view(
             'advertisement.edit',
-            compact('advertisement', 'amenitiesAll', 'amenitiesOfAdvertisement', 'files')
+            compact(
+                'advertisement',
+                'amenitiesAll',
+                'amenitiesOfAdvertisement',
+                'files'
+            )
         );
     }
 }

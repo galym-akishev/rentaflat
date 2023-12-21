@@ -2,14 +2,12 @@
 
 namespace App\Http\Controllers\Advertisement;
 
-use App\Http\Controllers\Controller;
-use App\Models\Advertisement;
-
-class IndexController extends Controller
+class IndexController extends BaseController
 {
     public function __invoke()
     {
-        $advertisements = Advertisement::all();
+        $advertisements = $this->service->getAllAdvertisements();
+
         return view('advertisement.index', compact('advertisements'));
     }
 }
