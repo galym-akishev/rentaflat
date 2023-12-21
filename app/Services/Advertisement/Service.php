@@ -4,14 +4,15 @@ namespace App\Services\Advertisement;
 
 use App\Models\Advertisement;
 use App\Models\Amenity;
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Collection;
 
 class Service
 {
 
-    public function getAllAdvertisements(): Collection
+    public function getAllAdvertisements(): LengthAwarePaginator
     {
-        return Advertisement::all();
+        return Advertisement::paginate(2);
     }
 
     public function getAllAmenities(): Collection

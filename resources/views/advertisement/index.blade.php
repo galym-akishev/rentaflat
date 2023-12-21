@@ -24,6 +24,9 @@
                             </li>
                         @endforeach
                     </ul>
+                    <div class="mt-4">
+                        {{ $advertisements->links() }}
+                    </div>
                 @else
                     No advertisements yet.
                 @endif

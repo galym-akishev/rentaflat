@@ -3,6 +3,9 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Advertisement;
+use App\Models\Amenity;
+use App\Models\File;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
