@@ -3,23 +3,14 @@
 namespace App\Http\Controllers\Advertisement;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Advertisement\StoreRequest;
 use App\Models\Advertisement;
 
 class StoreController extends Controller
 {
-    public function __invoke()
+    public function __invoke(StoreRequest $request)
     {
-        $data = request()->validate(
-            [
-                'title' => 'string',
-                'description' => 'string',
-                'price' => 'string',
-                'amenities' => 'array',
-                'amenities.*' => 'string',
-                'files' => 'required',
-                'files.*' => 'required|mimes:jpeg,bmp,png,jpg|max:2048'
-            ]
-        );
+        $data = $request->validated();
         $files = [];
         if (request()->file('files')) {
             foreach (request()->file('files') as $key => $file) {

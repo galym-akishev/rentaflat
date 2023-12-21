@@ -3,23 +3,14 @@
 namespace App\Http\Controllers\Advertisement;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Advertisement\UpdateRequest;
 use App\Models\Advertisement;
 
 class UpdateController extends Controller
 {
-    public function __invoke(Advertisement $advertisement)
+    public function __invoke(UpdateRequest $request, Advertisement $advertisement)
     {
-        $data = request()->validate(
-            [
-                'title' => 'string',
-                'description' => 'string',
-                'price' => 'string',
-                'amenities' => 'array',
-                'amenities.*' => 'string',
-                'files' => 'nullable',
-                'files.*' => 'nullable|mimes:jpeg,bmp,png,jpg|max:2048'
-            ]
-        );
+        $data = $request->validated();
         $files = [];
         if (request()->file('files')) {
             foreach (request()->file('files') as $key => $file) {
