@@ -53,6 +53,13 @@ Route::group(['namespace' => 'Amenity'], function () {
         ->name('amenity.delete');
 });
 
+Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
+    Route::group(['namespace' => 'Advertisement'], function () {
+        Route::get('/advertisement', 'IndexController')
+            ->name('admin.advertisement.index');
+    });
+});
+
 
 Auth::routes();
 

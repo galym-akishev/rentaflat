@@ -6,7 +6,7 @@
                 <h4 class="mt-2">Listing of advertisements</h4>
                 <form method="GET" action="{{ route('advertisement.index') }}">
                     <div class="col-sm-3 my-1">
-                        <label class="sr-only" for="title">Title</label>
+                        <label class="sr-only" for="title" hidden></label>
                         <div class="input-group">
                             <div class="input-group-text p-1 opacity-50">
                                 <button type="submit" class="btn btn-info p-2">Search</button>
@@ -18,7 +18,7 @@
                 </form>
                 <form method="GET" action="{{ route('advertisement.index') }}">
                     <div class="col-sm-3 my-1">
-                        <label class="sr-only" for="description">Description</label>
+                        <label class="sr-only" for="description" hidden></label>
                         <div class="input-group">
                             <div class="input-group-text p-1 opacity-50">
                                 <button type="submit" class="btn btn-info p-2">Search</button>
@@ -30,7 +30,7 @@
                 </form>
                 <form method="GET" action="{{ route('advertisement.index') }}">
                     <div class="col-sm-3 my-1">
-                        <label class="sr-only" for="price">Price</label>
+                        <label class="sr-only" for="price" hidden></label>
                         <div class="input-group">
                             <div class="input-group-text p-1 opacity-50">
                                 <button type="submit" class="btn btn-info p-2">Search</button>
@@ -66,7 +66,6 @@
                 @else
                     No advertisements yet.
                 @endif
-
             </div>
         </div>
     </div>
