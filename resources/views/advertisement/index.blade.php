@@ -4,6 +4,42 @@
         <div class="row">
             <div class="col-12">
                 <h4 class="mt-2">Listing of advertisements</h4>
+                <form method="GET" action="{{ route('advertisement.index') }}">
+                    <div class="col-sm-3 my-1">
+                        <label class="sr-only" for="title">Title</label>
+                        <div class="input-group">
+                            <div class="input-group-text p-1 opacity-50">
+                                <button type="submit" class="btn btn-info p-2">Search</button>
+                            </div>
+                            <input type="text" class="form-control opacity-50" name="title" id="title"
+                                   placeholder="... title ...">
+                        </div>
+                    </div>
+                </form>
+                <form method="GET" action="{{ route('advertisement.index') }}">
+                    <div class="col-sm-3 my-1">
+                        <label class="sr-only" for="description">Description</label>
+                        <div class="input-group">
+                            <div class="input-group-text p-1 opacity-50">
+                                <button type="submit" class="btn btn-info p-2">Search</button>
+                            </div>
+                            <input type="text" class="form-control opacity-50" name="description" id="description"
+                                   placeholder="... description ...">
+                        </div>
+                    </div>
+                </form>
+                <form method="GET" action="{{ route('advertisement.index') }}">
+                    <div class="col-sm-3 my-1">
+                        <label class="sr-only" for="price">Price</label>
+                        <div class="input-group">
+                            <div class="input-group-text p-1 opacity-50">
+                                <button type="submit" class="btn btn-info p-2">Search</button>
+                            </div>
+                            <input type="text" class="form-control opacity-50" name="price" id="price"
+                                   placeholder="... price ...">
+                        </div>
+                    </div>
+                </form>
                 @if(count($advertisements)>0)
                     <ul class="list-group my-2">
                         @foreach ($advertisements as $advertisement)
@@ -25,7 +61,7 @@
                         @endforeach
                     </ul>
                     <div class="mt-4">
-                        {{ $advertisements->withQueryString()->links() }}
+                        {{ $advertisements->links() }}
                     </div>
                 @else
                     No advertisements yet.

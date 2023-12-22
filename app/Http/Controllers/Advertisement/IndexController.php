@@ -9,6 +9,7 @@ use App\Models\Advertisement;
 class IndexController extends BaseController
 {
     private const ADVERTISEMENTS_PER_PAGE = 2;
+
     public function __invoke(FilterRequest $request)
     {
         $data = $request->validated();
