@@ -24,7 +24,7 @@ class StoreRequest extends FormRequest
         return [
             'title' => 'string',
             'description' => 'string',
-            'price' => 'integer',
+            'price' => 'string',
             'amenities' => 'array',
             'amenities.*' => 'string',
             'files' => 'required',

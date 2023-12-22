@@ -14,7 +14,7 @@ return new class extends Migration {
             $table->id();
             $table->string('title')->nullable(false);
             $table->string('description')->nullable(false);
-            $table->unsignedInteger('price')->nullable(false);
+            $table->string('price')->nullable(false);
 
             $table->timestamps();
 
