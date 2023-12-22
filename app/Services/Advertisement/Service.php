@@ -9,10 +9,11 @@ use Illuminate\Database\Eloquent\Collection;
 
 class Service
 {
+    private const ADVERTISEMENTS_PER_PAGE = 2;
 
     public function getAllAdvertisements(): LengthAwarePaginator
     {
-        return Advertisement::paginate(2);
+        return Advertisement::paginate(self::ADVERTISEMENTS_PER_PAGE);
     }
 
     public function getAllAmenities(): Collection
