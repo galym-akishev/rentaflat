@@ -24,7 +24,7 @@ class UpdateRequest extends FormRequest
         return [
             'title' => 'string',
             'description' => 'string',
-            'price' => 'string',
+            'price' => 'integer',
             'amenities' => 'array',
             'amenities.*' => 'string',
             'files' => 'nullable',
