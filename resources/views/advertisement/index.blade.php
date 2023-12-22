@@ -25,7 +25,7 @@
                         @endforeach
                     </ul>
                     <div class="mt-4">
-                        {{ $advertisements->links() }}
+                        {{ $advertisements->withQueryString()->links() }}
                     </div>
                 @else
                     No advertisements yet.
