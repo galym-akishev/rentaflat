@@ -43,6 +43,14 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('amenity.create') }}">Create amenity</a>
                     </li>
+                    @can('view', auth()->user())
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('admin.advertisement.index') }}">Admin</a>
+                        </li>
+                    @endcan
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('login') }}">Login</a>
+                    </li>
                 </ul>
             </div>
         </nav>

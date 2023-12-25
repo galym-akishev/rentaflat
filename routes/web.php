@@ -1,6 +1,7 @@
 <?php
 
 
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -53,7 +54,7 @@ Route::group(['namespace' => 'Amenity'], function () {
         ->name('amenity.delete');
 });
 
-Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
+Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'admin'], function () {
     Route::group(['namespace' => 'Advertisement'], function () {
         Route::get('/advertisement', 'IndexController')
             ->name('admin.advertisement.index');
@@ -63,4 +64,4 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');

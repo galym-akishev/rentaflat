@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Collection;
 
 class Service
 {
-
     public function getAllAmenities(): Collection
     {
         return Amenity::all();

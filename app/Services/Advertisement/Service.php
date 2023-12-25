@@ -2,6 +2,7 @@
 
 namespace App\Services\Advertisement;
 
+use App\Constants\PaginationConstants;
 use App\Models\Advertisement;
 use App\Models\Amenity;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
@@ -9,11 +10,10 @@ use Illuminate\Database\Eloquent\Collection;
 
 class Service
 {
-    private const ADVERTISEMENTS_PER_PAGE = 2;
 
     public function getAllAdvertisements(): LengthAwarePaginator
     {
-        return Advertisement::paginate(self::ADVERTISEMENTS_PER_PAGE);
+        return Advertisement::paginate(PaginationConstants::ADVERTISEMENTS_PER_PAGE);
     }
 
     public function getAllAmenities(): Collection
