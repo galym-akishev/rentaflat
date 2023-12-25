@@ -3,9 +3,8 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use App\Models\Advertisement;
 use App\Models\Amenity;
-use App\Models\File;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -17,9 +16,44 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+
+        User::factory()->create([
+            'name' => 'admin',
+            'email' => 'admin@example.com',
+            'password' => '123456789'
+
+        ]);
+        User::factory()->create([
+            'name' => 'moderator',
+            'email' => 'moderator@example.com',
+            'password' => '123456789'
+
+        ]);
+        User::factory()->create([
+            'name' => 'user1',
+            'email' => 'user1@example.com',
+            'password' => '123456789'
+        ]);
+        User::factory()->create([
+            'name' => 'user2',
+            'email' => 'user2@example.com',
+            'password' => '123456789'
+        ]);
+
+        Amenity::factory()->create([
+            'title' => 'towels',
+        ]);
+        Amenity::factory()->create([
+            'title' => 'sofa',
+        ]);
+        Amenity::factory()->create([
+            'title' => 'air conditioning',
+        ]);
+        Amenity::factory()->create([
+            'title' => 'tables',
+        ]);
+        Amenity::factory()->create([
+            'title' => 'shower',
+        ]);
     }
 }

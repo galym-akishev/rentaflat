@@ -20,6 +20,7 @@ class AdminPolicy
      */
     public function view(User $user, User $model): bool
     {
+        dd($user->isAdministrator());
         return ($model->role) === UserRolesEnum::ADMIN->value;
     }
 
