@@ -8,6 +8,8 @@ class EditController extends BaseController
 {
     public function __invoke(Advertisement $advertisement)
     {
+        $this->authorize('update', $advertisement);
+
         $amenitiesAll = $this->service->getAllAmenities();
         $amenitiesOfAdvertisement = $this->service->getAmenitiesOfAdvertisement($advertisement);
         $files = $this->service->getFilesOfAdvertisement($advertisement);

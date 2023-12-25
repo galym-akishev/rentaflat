@@ -44,7 +44,6 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'admi
     });
 });
 
-
 Route::group(['namespace' => 'Amenity'], function () {
     Route::get('/amenities', 'IndexController')
         ->name('amenity.index');
