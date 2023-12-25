@@ -20,7 +20,12 @@ class AdminPolicy
      */
     public function view(User $user, User $model): bool
     {
-        return ($model->role) === UserRolesEnum::ADMIN->value;
+        return in_array(
+            $user->role,
+            [
+                UserRolesEnum::ADMIN->value,
+            ]
+        );
     }
 
     /**

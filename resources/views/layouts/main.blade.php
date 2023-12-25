@@ -34,18 +34,21 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('advertisement.index') }}">Listings</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('advertisement.create') }}">Create Ad</a>
-                    </li>
-
+                    @can('create', App\Models\Advertisement::class)
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('amenity.create') }}">Create amenity</a>
+                            <a class="nav-link" href="{{ route('advertisement.create') }}">Create Ad</a>
                         </li>
-
+                    @endcan
+                    @can('viewAny', App\Models\Amenity::class)
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('amenity.index') }}">Amenities</a>
                         </li>
-
+                    @endcan
+                    @can('create', App\Models\Amenity::class)
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('amenity.create') }}">Create amenity</a>
+                        </li>
+                    @endcan
                     @can('view', auth()->user())
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('admin.advertisement.index') }}">Admin</a>

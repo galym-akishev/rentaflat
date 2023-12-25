@@ -61,7 +61,6 @@ Route::group(['namespace' => 'Amenity'], function () {
         ->name('amenity.delete');
 });
 
-
 Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
