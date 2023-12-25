@@ -8,6 +8,8 @@ class EditController extends BaseController
 {
     public function __invoke(Amenity $amenity)
     {
+        $this->authorize('update', $amenity);
+
         return view('amenity.edit', compact('amenity'));
     }
 }

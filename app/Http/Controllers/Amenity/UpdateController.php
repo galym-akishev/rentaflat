@@ -9,6 +9,8 @@ class UpdateController extends BaseController
 {
     public function __invoke(Amenity $amenity, UpdateRequest $request)
     {
+        $this->authorize('update', $amenity);
+
         $data = $request->validated();
         $this->service->update($amenity, $data);
 

@@ -37,6 +37,14 @@ Route::group(['namespace' => 'Advertisement'], function () {
         ->name('advertisement.delete');
 });
 
+Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'admin'], function () {
+    Route::group(['namespace' => 'Advertisement'], function () {
+        Route::get('/advertisement', 'IndexController')
+            ->name('admin.advertisement.index');
+    });
+});
+
+
 Route::group(['namespace' => 'Amenity'], function () {
     Route::get('/amenities', 'IndexController')
         ->name('amenity.index');
@@ -52,13 +60,6 @@ Route::group(['namespace' => 'Amenity'], function () {
         ->name('amenity.update');
     Route::delete('/amenities/{amenity}', 'DestroyController')
         ->name('amenity.delete');
-});
-
-Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'admin'], function () {
-    Route::group(['namespace' => 'Advertisement'], function () {
-        Route::get('/advertisement', 'IndexController')
-            ->name('admin.advertisement.index');
-    });
 });
 
 

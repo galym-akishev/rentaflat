@@ -37,12 +37,15 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('advertisement.create') }}">Create Ad</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('amenity.index') }}">Amenities</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('amenity.create') }}">Create amenity</a>
-                    </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('amenity.create') }}">Create amenity</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('amenity.index') }}">Amenities</a>
+                        </li>
+
                     @can('view', auth()->user())
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('admin.advertisement.index') }}">Admin</a>
