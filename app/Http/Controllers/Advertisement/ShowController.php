@@ -12,10 +12,16 @@ class ShowController extends BaseController
 
         $amenities = $this->service->getAmenitiesOfAdvertisement($advertisement);
         $files = $this->service->getFilesOfAdvertisement($advertisement);
+        $advertisementOwner = $this->service->getOwnerOfAdvertisement($advertisement);
 
         return view(
             'advertisement.show',
-            compact('advertisement', 'amenities', 'files')
+            compact(
+                'advertisement',
+                'amenities',
+                'files',
+                'advertisementOwner'
+            )
         );
     }
 }

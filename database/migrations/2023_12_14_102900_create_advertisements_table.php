@@ -12,11 +12,19 @@ return new class extends Migration {
     {
         Schema::create('advertisements', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id')->nullable(false);
             $table->string('title')->nullable(false);
             $table->string('description')->nullable(false);
             $table->unsignedInteger('price')->nullable(false);
 
             $table->timestamps();
+
+            $table->index('user_id', 'user_user_idx');
+
+            $table->foreign('user_id')
+                ->references('id')
+                ->on('users')
+                ->onDelete('cascade');
 
             $table->softDeletes();
         });

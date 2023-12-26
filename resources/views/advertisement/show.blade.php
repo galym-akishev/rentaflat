@@ -10,6 +10,9 @@
                         <div class="card-title">
                             <b>Title:</b> {{ $advertisement->title }}
                         </div>
+                        <div class="card-title">
+                            <b>Owner:</b> {{ $advertisementOwner }}
+                        </div>
                         @if(count($files)>0)
                             <div id="carouselControls" class="carousel slide" data-bs-ride="carousel">
                                 <div class="carousel-inner">

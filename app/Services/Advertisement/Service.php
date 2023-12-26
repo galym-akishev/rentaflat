@@ -31,6 +31,11 @@ class Service
         return $advertisement->files()->get();
     }
 
+    public function getOwnerOfAdvertisement(Advertisement $advertisement): string
+    {
+        return $advertisement->user->name;
+    }
+
     public function store($data): void
     {
         $files = $this->getArrayOfFileNames();

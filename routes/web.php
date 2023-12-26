@@ -63,4 +63,9 @@ Route::group(['namespace' => 'Amenity'], function () {
 
 Auth::routes();
 
-Route::get('/home', [HomeController::class, 'index'])->name('home');
+//Route::get('/home', [HomeController::class, 'index'])->name('home');
+
+Route::group(['namespace' => 'Home'], function () {
+    Route::get('/home', 'IndexController')
+        ->name('home.index');
+});
