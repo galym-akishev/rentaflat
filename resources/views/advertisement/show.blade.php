@@ -10,7 +10,7 @@
                         <div class="card-title">
                             <b>Title:</b> {{ $advertisement->title }}
                         </div>
-                        <div class="card-title">
+                        <div class="card-text">
                             <b>Owner:</b> {{ $advertisementOwner }}
                         </div>
                         @if(count($files)>0)
@@ -55,6 +55,10 @@
                         <div class="card-text">
                             <b>Price:</b>
                             {{ $advertisement->price }}
+                        </div>
+                        <div class="card-text">
+                            <b>Phone:</b>
+                            {{ $advertisement->phone }}
                         </div>
                         <div class="d-flex mt-4">
                             <a

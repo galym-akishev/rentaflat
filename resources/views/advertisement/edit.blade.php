@@ -104,6 +104,17 @@
                                 @enderror
                             </div>
                         @endif
+                        <div class="form-row mt-2">
+                            <label for="phone"><b>Phone:</b></label>
+                            <input
+                                type="text"
+                                name="phone"
+                                id="phone"
+                                class="form-control"
+                                placeholder=" "
+                                value="{{ $advertisement->phone }}"
+                                required/>
+                        </div>
                         <button
                             type="submit"
                             class="btn btn-info mb-2 mt-4">

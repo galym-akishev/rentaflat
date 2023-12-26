@@ -28,7 +28,8 @@ class UpdateRequest extends FormRequest
             'amenities' => 'array',
             'amenities.*' => 'string',
             'files' => 'nullable',
-            'files.*' => 'nullable|mimes:jpeg,bmp,png,jpg|max:2048'
+            'files.*' => 'nullable|mimes:jpeg,bmp,png,jpg|max:2048',
+            'phone' => 'required|string|min:8|max:11'
         ];
     }
 }

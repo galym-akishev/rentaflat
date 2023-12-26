@@ -32,7 +32,8 @@ class Advertisement extends Model
         'user_id',
         'title',
         'description',
-        'price'
+        'price',
+        'phone'
     ];
 
     /**

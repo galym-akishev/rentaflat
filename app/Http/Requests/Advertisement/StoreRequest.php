@@ -39,7 +39,8 @@ class StoreRequest extends FormRequest
             'amenities.*' => 'string',
             'files' => 'required',
             'files.*' => 'required|mimes:jpeg,bmp,png,jpg|max:2048',
-            'user_id' => 'integer'
+            'user_id' => 'integer',
+            'phone' => 'required|string|min:8|max:11'
         ];
     }
 }
