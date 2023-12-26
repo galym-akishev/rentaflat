@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Home;
 
-use App\Http\Controllers\Amenity\BaseController;
-
 class IndexController extends BaseController
 {
     public function __invoke()
     {
-        return view('home.index');
+        $advertisements = $this->service->getAllAdvertisementsOfAuthenticatedUser();
+//        dd($advertisements);
+        return view('home.index', compact('advertisements'));
     }
 }
