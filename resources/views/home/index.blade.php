@@ -13,6 +13,9 @@
                         @endif
                         <div>
                             Your published and not-published advertisements:
+                            @if(count($advertisements)==0)
+                                No advertisements yet.
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -36,8 +39,6 @@
                             </li>
                         @endforeach
                     </ul>
-                @else
-                    No advertisements yet.
                 @endif
             </div>
         </div>
