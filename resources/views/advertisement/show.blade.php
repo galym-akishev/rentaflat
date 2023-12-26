@@ -19,20 +19,28 @@
                                     @foreach($files as $file)
                                         @if ($loop->first)
                                             <div class="carousel-item active">
-                                                <img class="d-block mx-auto" height="200" src="{{ Vite::asset('public/uploads/'. $file->name) }}" alt="{{ $file->name }}">
+                                                <img class="d-block mx-auto" height="200"
+                                                     src="{{ Vite::asset('public/uploads/'. $file->name) }}"
+                                                     alt="{{ $file->name }}">
                                             </div>
                                         @else
                                             <div class="carousel-item">
-                                                <img class="d-block mx-auto" height="200" src="{{ Vite::asset('public/uploads/'. $file->name) }}" alt="{{ $file->name }}">
+                                                <img class="d-block mx-auto" height="200"
+                                                     src="{{ Vite::asset('public/uploads/'. $file->name) }}"
+                                                     alt="{{ $file->name }}">
                                             </div>
                                         @endif
                                     @endforeach
                                 </div>
-                                <a class="carousel-control-prev" href="#carouselControls" role="button" data-bs-slide="prev">
-                                    <span class="carousel-control-prev-icon text-bg-info opacity-50" aria-hidden="true"></span>
+                                <a class="carousel-control-prev" href="#carouselControls" role="button"
+                                   data-bs-slide="prev">
+                                    <span class="carousel-control-prev-icon text-bg-info opacity-50"
+                                          aria-hidden="true"></span>
                                 </a>
-                                <a class="carousel-control-next" href="#carouselControls" role="button" data-bs-slide="next">
-                                    <span class="carousel-control-next-icon text-bg-info opacity-50" aria-hidden="true"></span>
+                                <a class="carousel-control-next" href="#carouselControls" role="button"
+                                   data-bs-slide="next">
+                                    <span class="carousel-control-next-icon text-bg-info opacity-50"
+                                          aria-hidden="true"></span>
                                 </a>
                             </div>
                         @endif
@@ -61,19 +69,23 @@
                             {{ $advertisement->phone }}
                         </div>
                         <div class="d-flex mt-4">
-                            <a
-                                href="{{ route('advertisement.edit', $advertisement->id) }}"
-                                class="btn btn-info mb-1 me-1">
-                                Edit
-                            </a>
-                            <form action="{{ route('advertisement.delete', $advertisement->id) }}" method="post">
-                                @csrf
-                                @method('delete')
-                                <input
-                                    type="submit"
-                                    class="btn btn-info mb-1 me-1"
-                                    value="Delete">
-                            </form>
+                            @can('update', $advertisement)
+                                <a
+                                    href="{{ route('advertisement.edit', $advertisement->id) }}"
+                                    class="btn btn-info mb-1 me-1">
+                                    Edit
+                                </a>
+                            @endcan
+                            @can('delete', $advertisement)
+                                <form action="{{ route('advertisement.delete', $advertisement->id) }}" method="post">
+                                    @csrf
+                                    @method('delete')
+                                    <input
+                                        type="submit"
+                                        class="btn btn-info mb-1 me-1"
+                                        value="Delete">
+                                </form>
+                            @endcan
                             <a
                                 href="{{ route('advertisement.index') }}"
                                 class="btn btn-info mb-1 me-1"

@@ -21,14 +21,7 @@ class AdvertisementPolicy
      */
     public function view(User $user, Advertisement $advertisement): bool
     {
-        return in_array(
-            $user->role,
-            [
-                UserRolesEnum::ADMIN->value,
-                UserRolesEnum::MODERATOR->value,
-                UserRolesEnum::USER->value
-            ]
-        );
+        return true;
     }
 
     /**
@@ -51,14 +44,7 @@ class AdvertisementPolicy
      */
     public function update(User $user, Advertisement $advertisement): bool
     {
-        return in_array(
-            $user->role,
-            [
-                UserRolesEnum::ADMIN->value,
-                UserRolesEnum::MODERATOR->value,
-                UserRolesEnum::USER->value
-            ]
-        );
+        return $user->id === $advertisement->user_id;
     }
 
     /**
@@ -66,14 +52,7 @@ class AdvertisementPolicy
      */
     public function delete(User $user, Advertisement $advertisement): bool
     {
-        return in_array(
-            $user->role,
-            [
-                UserRolesEnum::ADMIN->value,
-                UserRolesEnum::MODERATOR->value,
-                UserRolesEnum::USER->value
-            ]
-        );
+        return $user->id === $advertisement->user_id;
     }
 
     /**
