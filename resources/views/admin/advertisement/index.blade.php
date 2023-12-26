@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <h4 class="mt-2">Listing of advertisements</h4>
+                <h4 class="mt-2">All advertisements</h4>
                 @if(count($advertisements)>0)
                     <ul class="list-group my-2">
                         @foreach ($advertisements as $advertisement)

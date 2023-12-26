@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <h4 class="mt-2">Amenities</h4>
+                <h4 class="mt-2">All amenities</h4>
                 @if(count($amenities)>0)
                     <ul class="list-group my-2">
                         @foreach ($amenities as $amenity)
