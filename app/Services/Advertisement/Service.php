@@ -3,6 +3,7 @@
 namespace App\Services\Advertisement;
 
 use App\Constants\PaginationConstants;
+use App\Http\Filters\AdvertisementFilter;
 use App\Models\Advertisement;
 use App\Models\Amenity;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
@@ -10,10 +11,14 @@ use Illuminate\Database\Eloquent\Collection;
 
 class Service
 {
-
-    public function getAllAdvertisements(): LengthAwarePaginator
+    public function makeFilterOnData(array $data)
     {
-        return Advertisement::paginate(PaginationConstants::ADVERTISEMENTS_PER_PAGE);
+        return app()->make(AdvertisementFilter::class, ['queryParams' => array_filter($data)]);
+    }
+
+    public function getPaginatedAdvertisementsWithFilter(AdvertisementFilter $filter)
+    {
+        return Advertisement::filter($filter)->paginate(PaginationConstants::ADVERTISEMENTS_PER_PAGE);
     }
 
     public function getAllAmenities(): Collection

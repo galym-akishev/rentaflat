@@ -21,10 +21,6 @@ class AdminPanelMiddleware
         {
             return redirect()->route('home');
         }
-        if (auth()->user()->role !== self::ROLE_ADMIN)
-        {
-            return redirect()->route('home');
-        }
 
         return $next($request);
     }

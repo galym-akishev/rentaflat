@@ -6,9 +6,42 @@
             <p>
                 Advertisements
                 <span class="badge badge-info right">
-                    {{ $advertisements->total() }}
+                    {{ $advertisementsCount }}
                 </span>
             </p>
         </a>
     </li>
+    <li class="nav-item">
+        <a href="{{ route('admin.amenity.index') }}" class="nav-link">
+            <i class="nav-icon fas fa-align-justify"></i>
+            <p>
+                Amenities
+                <span class="badge badge-info right">
+                    {{ $amenitiesCount }}
+                </span>
+            </p>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a href="{{ route('admin.user.index') }}" class="nav-link">
+            <i class="nav-icon fas fa-align-justify"></i>
+            <p>
+                Users
+                <span class="badge badge-info right">
+                    {{ $usersCount }}
+                </span>
+            </p>
+        </a>
+    </li>
+{{--    <li class="nav-item">--}}
+{{--        <a href="{{ route('admin.users.index') }}" class="nav-link">--}}
+{{--            <i class="nav-icon fas fa-align-justify"></i>--}}
+{{--            <p>--}}
+{{--                Users--}}
+{{--                <span class="badge badge-info right">--}}
+{{--                    {{ $users->total() }}--}}
+{{--                </span>--}}
+{{--            </p>--}}
+{{--        </a>--}}
+{{--    </li>--}}
 </ul>

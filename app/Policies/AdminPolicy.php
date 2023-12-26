@@ -24,6 +24,7 @@ class AdminPolicy
             $user->role,
             [
                 UserRolesEnum::ADMIN->value,
+                UserRolesEnum::MODERATOR->value,
             ]
         );
     }

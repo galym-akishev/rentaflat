@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Advertisement;
+namespace App\Http\Controllers\Admin\Amenity;
 
 use App\Constants\PaginationConstants;
 use App\Http\Filters\AdvertisementFilter;
 use App\Http\Requests\Advertisement\FilterRequest;
-use App\Models\Advertisement;
+use App\Models\Amenity;
 
 class IndexController extends BaseController
 {
@@ -14,15 +14,15 @@ class IndexController extends BaseController
         $data = $request->validated();
 
         $filter = app()->make(AdvertisementFilter::class, ['queryParams' => array_filter($data)]);
-        $advertisements = Advertisement::filter($filter)->paginate(PaginationConstants::ADVERTISEMENTS_PER_PAGE);
+        $amenities = Amenity::filter($filter)->paginate(PaginationConstants::AMENITIES_PER_PAGE);
 
         $advertisementsCount = $this->service->getAdvertisementsCount();
         $usersCount = $this->service->getUsersCount();
         $amenitiesCount = $this->service->getAmenitiesCount();
 
-        return view('admin.advertisement.index',
+        return view('admin.amenity.index',
             compact(
-                'advertisements',
+                'amenities',
                 'advertisementsCount',
                 'amenitiesCount',
                 'usersCount',
