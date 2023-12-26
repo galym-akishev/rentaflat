@@ -14,7 +14,9 @@
                                         <a
                                             class="link-info link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
                                             href="{{ route('amenity.show', $amenity->id) }}">
-                                            [Details of ID: {{ $amenity->id }}]
+                                            @can('create', App\Models\Amenity::class)
+                                                [Details of ID: {{ $amenity->id }}]
+                                            @endcan
                                         </a>
                                     </small>
                                 </div>

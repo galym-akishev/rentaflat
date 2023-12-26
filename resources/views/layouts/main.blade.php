@@ -28,9 +28,11 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="{{ route('home.index') }}">Home</a>
-                    </li>
+                    @auth
+                        <li class="nav-item active">
+                            <a class="nav-link" href="{{ route('home.index') }}">Home</a>
+                        </li>
+                    @endauth
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('advertisement.index') }}">Listings</a>
                     </li>
@@ -54,6 +56,8 @@
                             <a class="nav-link" href="{{ route('admin.advertisement.index') }}">Admin</a>
                         </li>
                     @endcan
+                </ul>
+                <ul class="navbar-nav ms-auto">
                     <!-- Authentication Links -->
                     @guest
                         @if (Route::has('login'))
@@ -69,7 +73,8 @@
                         @endif
                     @else
                         <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                               data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{ Auth::user()->name }}
                             </a>
 
