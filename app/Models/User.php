@@ -52,4 +52,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Advertisement::class);
     }
+
+    public static function getUsersCount(): int
+    {
+        return self::count();
+    }
 }
