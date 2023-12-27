@@ -33,4 +33,9 @@ class Amenity extends Model
             'amenity_id',
             'advertisement_id');
     }
+
+    public static function getAmenitiesCount(): int
+    {
+        return self::count();
+    }
 }

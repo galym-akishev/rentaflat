@@ -68,4 +68,9 @@ class Advertisement extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public static function getAdvertisementsCount(): int
+    {
+        return self::count();
+    }
 }
