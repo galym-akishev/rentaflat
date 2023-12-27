@@ -22,15 +22,17 @@
             </p>
         </a>
     </li>
-    <li class="nav-item">
-        <a href="{{ route('admin.user.index') }}" class="nav-link">
-            <i class="nav-icon fas fa-align-justify"></i>
-            <p>
-                Users
-                <span class="badge badge-info right">
+    @can('update', auth()->user())
+        <li class="nav-item">
+            <a href="{{ route('admin.user.index') }}" class="nav-link">
+                <i class="nav-icon fas fa-align-justify"></i>
+                <p>
+                    Users
+                    <span class="badge badge-info right">
                     {{ $usersCount }}
                 </span>
-            </p>
-        </a>
-    </li>
+                </p>
+            </a>
+        </li>
+    @endcan
 </ul>

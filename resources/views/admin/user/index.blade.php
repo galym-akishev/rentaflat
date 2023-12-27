@@ -14,7 +14,7 @@
                                     <small>
                                         <a
                                             class="link-info link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
-                                            href="/">
+                                            href="{{ route('admin.user.show', $user) }}">
                                             [Details of ID: {{ $user->id }}]
                                         </a>
                                     </small>
@@ -26,7 +26,7 @@
                         {{ $users->links() }}
                     </div>
                 @else
-                    No amenities yet.
+                    No users yet.
                 @endif
             </div>
         </div>

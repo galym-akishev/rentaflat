@@ -42,7 +42,12 @@ class AdminPolicy
      */
     public function update(User $user, User $model): bool
     {
-        //
+        return in_array(
+            $user->role,
+            [
+                UserRolesEnum::ADMIN->value
+            ]
+        );
     }
 
     /**

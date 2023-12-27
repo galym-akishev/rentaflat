@@ -49,6 +49,12 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'admi
     Route::group(['namespace' => 'User'], function () {
         Route::get('/user', 'IndexController')
             ->name('admin.user.index');
+        Route::get('/user/{user}', 'ShowController')
+            ->name('admin.user.show');
+        Route::get('/user/{user}/edit', 'EditController')
+            ->name('admin.user.edit');
+        Route::patch('/user/{user}', 'UpdateController')
+            ->name('admin.user.update');
     });
 });
 
@@ -70,8 +76,6 @@ Route::group(['namespace' => 'Amenity'], function () {
 });
 
 Auth::routes();
-
-//Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::group(['namespace' => 'Home'], function () {
     Route::get('/home', 'IndexController')

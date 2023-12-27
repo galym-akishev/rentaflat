@@ -6,7 +6,6 @@ use App\Constants\PaginationConstants;
 use App\Http\Filters\AdvertisementFilter;
 use App\Models\Advertisement;
 use App\Models\Amenity;
-use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Collection;
 
 class Service
@@ -61,7 +60,7 @@ class Service
             );
     }
 
-    public function update($advertisement, $data): void
+    public function update(Advertisement $advertisement, $data): void
     {
         $files = $this->getArrayOfFileNames();
         $advertisement->update($data);
