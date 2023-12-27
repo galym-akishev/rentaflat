@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('layouts.admin')
 @section('content')
     <div class="container">
         <div class="row">
@@ -6,7 +6,7 @@
                 <h4 class="mt-2">Create a new amenity</h4>
                 <div class="border border-light-subtle rounded-2">
                     <form
-                        action="{{ route('amenity.store') }}"
+                        action="{{ route('admin.amenity.store') }}"
                         method="post"
                         class="mx-3">
                         @csrf
@@ -26,7 +26,7 @@
                             Create
                         </button>
                         <a
-                            href="{{ route('amenity.index') }}"
+                            href="{{ route('admin.amenity.index') }}"
                             class="btn btn-info mb-2 mt-4">
                             Back
                         </a>

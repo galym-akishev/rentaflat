@@ -1,7 +1,6 @@
 <?php
 
 
-use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -43,8 +42,20 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'admi
             ->name('admin.advertisement.index');
     });
     Route::group(['namespace' => 'Amenity'], function () {
-        Route::get('/amenity', 'IndexController')
+        Route::get('/amenities', 'IndexController')
             ->name('admin.amenity.index');
+        Route::get('/amenities/create', 'CreateController')
+            ->name('admin.amenity.create');
+        Route::post('/amenities', 'StoreController')
+            ->name('admin.amenity.store');
+        Route::get('/amenities/{amenity}', 'ShowController')
+            ->name('admin.amenity.show');
+        Route::get('/amenities/{amenity}/edit', 'EditController')
+            ->name('admin.amenity.edit');
+        Route::patch('/amenities/{amenity}', 'UpdateController')
+            ->name('admin.amenity.update');
+        Route::delete('/amenities/{amenity}', 'DestroyController')
+            ->name('admin.amenity.delete');
     });
     Route::group(['namespace' => 'User'], function () {
         Route::get('/user', 'IndexController')
@@ -56,23 +67,6 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'admi
         Route::patch('/user/{user}', 'UpdateController')
             ->name('admin.user.update');
     });
-});
-
-Route::group(['namespace' => 'Amenity'], function () {
-    Route::get('/amenities', 'IndexController')
-        ->name('amenity.index');
-    Route::get('/amenities/create', 'CreateController')
-        ->name('amenity.create');
-    Route::post('/amenities', 'StoreController')
-        ->name('amenity.store');
-    Route::get('/amenities/{amenity}', 'ShowController')
-        ->name('amenity.show');
-    Route::get('/amenities/{amenity}/edit', 'EditController')
-        ->name('amenity.edit');
-    Route::patch('/amenities/{amenity}', 'UpdateController')
-        ->name('amenity.update');
-    Route::delete('/amenities/{amenity}', 'DestroyController')
-        ->name('amenity.delete');
 });
 
 Auth::routes();

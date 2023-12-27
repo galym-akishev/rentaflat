@@ -11,6 +11,19 @@
             </p>
         </a>
     </li>
+    @can('update', auth()->user())
+        <li class="nav-item">
+            <a href="{{ route('admin.user.index') }}" class="nav-link">
+                <i class="nav-icon fas fa-align-justify"></i>
+                <p>
+                    Users
+                    <span class="badge badge-info right">
+                    {{ $usersCount }}
+                </span>
+                </p>
+            </a>
+        </li>
+    @endcan
     <li class="nav-item">
         <a href="{{ route('admin.amenity.index') }}" class="nav-link">
             <i class="nav-icon fas fa-align-justify"></i>
@@ -22,16 +35,11 @@
             </p>
         </a>
     </li>
-    @can('update', auth()->user())
+    @can('create', App\Models\Amenity::class)
         <li class="nav-item">
-            <a href="{{ route('admin.user.index') }}" class="nav-link">
+            <a class="nav-link" href="{{ route('admin.amenity.create') }}">
                 <i class="nav-icon fas fa-align-justify"></i>
-                <p>
-                    Users
-                    <span class="badge badge-info right">
-                    {{ $usersCount }}
-                </span>
-                </p>
+                Create amenity
             </a>
         </li>
     @endcan

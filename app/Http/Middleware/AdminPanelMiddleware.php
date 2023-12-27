@@ -2,14 +2,13 @@
 
 namespace App\Http\Middleware;
 
+use App\Enums\UserRolesEnum;
 use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 class AdminPanelMiddleware
 {
-    final const ROLE_ADMIN = 'admin';
-
     /**
      * Handle an incoming request.
      *
@@ -17,9 +16,12 @@ class AdminPanelMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(is_null(auth()->user()))
-        {
-            return redirect()->route('home');
+        if (is_null(auth()->user())) {
+            return redirect()->route('welcome');
+        }
+
+        if (auth()->user()->role === UserRolesEnum::USER->value) {
+            return redirect()->route('welcome');
         }
 
         return $next($request);

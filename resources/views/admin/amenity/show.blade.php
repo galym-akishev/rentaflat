@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('layouts.admin')
 @section('content')
     <div class="container">
         <div class="row">
@@ -6,14 +6,16 @@
                 <h4 class="mt-2">Details of the amenity</h4>
                 <div class="card">
                     <div class="card-body">
-                        <p class="card-title"><b>Title:</b> {{ $amenity->title }}</p>
-                        <div class="d-flex">
+                        <div class="card-text">
+                            <b>Title:</b> {{ $amenity->title }}
+                        </div>
+                        <div class="d-flex mt-4">
                             <a
-                                href="{{ route('amenity.edit', $amenity->id) }}"
+                                href="{{ route('admin.amenity.edit', $amenity->id) }}"
                                 class="btn btn-info mb-1 me-1">
                                 Edit
                             </a>
-                            <form action="{{ route('amenity.delete', $amenity->id) }}" method="post">
+                            <form action="{{ route('admin.amenity.delete', $amenity->id) }}" method="post">
                                 @csrf
                                 @method('delete')
                                 <input
@@ -22,7 +24,7 @@
                                     value="Delete">
                             </form>
                             <a
-                                href="{{ route('amenity.index') }}"
+                                href="{{ route('admin.amenity.index') }}"
                                 class="btn btn-info mb-1 me-1"
                             >
                                 Back

@@ -7,6 +7,8 @@
     <meta name="description" content="Rentaflat - portfolio website on Laravel/PHP">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <link rel="shortcut icon" type="image/x-icon" href="{{ Vite::asset('resources/images/favicon.png') }}"/>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="{{ asset('plugins/fontawesome-free/css/all.min.css') }}">
     @vite(['resources/scss/app.scss', 'resources/js/app.js'])
 </head>
 
@@ -39,11 +41,6 @@
                     @can('create', App\Models\Advertisement::class)
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('advertisement.create') }}">Create Ad</a>
-                        </li>
-                    @endcan
-                    @can('viewAny', App\Models\Amenity::class)
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('amenity.index') }}">Amenities</a>
                         </li>
                     @endcan
                     @can('view', auth()->user())

@@ -1,11 +1,11 @@
-@extends('layouts.main')
+@extends('layouts.admin')
 @section('content')
     <div class="container">
         <div class="row">
             <div class="col-12 text-wrap">
                 <h4 class="mt-2">Edit the amenity</h4>
                 <div class="border border-light-subtle rounded-2">
-                    <form action="{{ route('amenity.update', $amenity->id) }}"
+                    <form action="{{ route('admin.amenity.update', $amenity->id) }}"
                           method="post"
                           class="mx-3">
                         @csrf
@@ -27,7 +27,7 @@
                             Update
                         </button>
                         <a
-                            href="{{ route('amenity.show', $amenity->id) }}"
+                            href="{{ route('admin.amenity.show', $amenity->id) }}"
                             class="btn btn-info mb-2 mt-4"
                         >
                             Back
