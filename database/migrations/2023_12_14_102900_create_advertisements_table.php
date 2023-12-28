@@ -13,6 +13,7 @@ return new class extends Migration {
         Schema::create('advertisements', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id')->nullable(false);
+            $table->boolean('published')->nullable(false)->default(false);
             $table->string('title')->nullable(false);
             $table->string('description')->nullable(false);
             $table->unsignedInteger('price')->nullable(false);

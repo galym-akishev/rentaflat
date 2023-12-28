@@ -36,11 +36,6 @@
     <nav class="main-header navbar navbar-expand navbar-white navbar-light">
         <!-- Left navbar links -->
         <ul class="navbar-nav">
-            @auth
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('home.index') }}">Home</a>
-                </li>
-            @endauth
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('advertisement.index') }}">Listings</a>
             </li>
@@ -97,7 +92,7 @@
             <!-- Sidebar user panel (optional) -->
             <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                 <div class="info">
-                    <a href="{{ route('admin.advertisement.index') }}" class="d-block">
+                    <a href="{{ route('home.index') }}" class="d-block">
                         <b>Name: </b>
                         @if(auth()->user())
                             {{ auth()->user()->name }}
