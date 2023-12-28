@@ -3,6 +3,7 @@
 namespace App\Services\Advertisement;
 
 use App\Constants\PaginationConstants;
+use App\Enums\PublishedStatusEnum;
 use App\Http\Filters\AdvertisementFilter;
 use App\Models\Advertisement;
 use App\Models\Amenity;
@@ -17,7 +18,9 @@ class Service
 
     public function getPaginatedAdvertisementsWithFilter(AdvertisementFilter $filter)
     {
-        return Advertisement::filter($filter)->paginate(PaginationConstants::ADVERTISEMENTS_PER_PAGE);
+        return Advertisement::where('published', '=', PublishedStatusEnum::PUBLISHED)
+            ->filter($filter)
+            ->paginate(PaginationConstants::ADVERTISEMENTS_PER_PAGE);
     }
 
     public function getAllAmenities(): Collection

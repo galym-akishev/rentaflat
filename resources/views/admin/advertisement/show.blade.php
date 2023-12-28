@@ -5,7 +5,6 @@
         <div class="row">
             <div class="col-12">
                 <h4 class="mt-2">Details of the advertisement</h4>
-
                 <div class="card">
                     <div class="card-body">
                         <div class="card-title">

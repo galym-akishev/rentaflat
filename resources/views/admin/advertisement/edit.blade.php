@@ -3,8 +3,8 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <div class="col-12 text-wrap">
-                <h4 class="mt-2">Edit the published status of the advertisement</h4>
+            <h4 class="mt-2">Edit the published status of the advertisement</h4>
+            <div class="col-12 bg-white py-2">
                 <div class="border border-light-subtle rounded-2">
                     <div class="mx-3 mt-2">
                         @if ($errors->any())

@@ -26,6 +26,7 @@
                                 id="title"
                                 class="form-control"
                                 placeholder=" "
+                                maxlength="250"
                                 required/>
                         </div>
                         <div class="form-row mt-2">
@@ -36,12 +37,15 @@
                                 id="description"
                                 class="form-control"
                                 placeholder=" "
+                                maxlength="250"
                                 required/>
                         </div>
                         <div class="form-row mt-2">
                             <label for="price"><b>Price:</b></label>
                             <input
-                                type="text"
+                                type="number"
+                                min="10"
+                                max="1000"
                                 name="price"
                                 id="price"
                                 class="form-control"
