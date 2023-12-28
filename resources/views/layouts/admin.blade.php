@@ -37,6 +37,14 @@
         <!-- Left navbar links -->
         <ul class="navbar-nav">
             <li class="nav-item">
+                <a href="{{ route('home.index') }}" class="nav-link">
+                    <i class="nav-icon fas fa-align-justify"></i>
+                    <p>
+                        Home
+                    </p>
+                </a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link" href="{{ route('advertisement.index') }}">Listings</a>
             </li>
             @can('create', App\Models\Advertisement::class)

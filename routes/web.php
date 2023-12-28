@@ -40,6 +40,14 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'admi
     Route::group(['namespace' => 'Advertisement'], function () {
         Route::get('/advertisement', 'IndexController')
             ->name('admin.advertisement.index');
+        Route::get('/advertisements/{advertisement}', 'ShowController')
+            ->name('admin.advertisement.show');
+        Route::get('/advertisements/{advertisement}/edit', 'EditController')
+            ->name('admin.advertisement.edit');
+        Route::patch('/advertisements/{advertisement}/update', 'UpdateController')
+            ->name('admin.advertisement.update');
+        Route::delete('/advertisements/{advertisement}', 'DestroyController')
+            ->name('admin.advertisement.delete');
     });
     Route::group(['namespace' => 'Amenity'], function () {
         Route::get('/amenities', 'IndexController')

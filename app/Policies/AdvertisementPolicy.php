@@ -44,7 +44,15 @@ class AdvertisementPolicy
      */
     public function update(User $user, Advertisement $advertisement): bool
     {
-        return $user->id === $advertisement->user_id;
+        $isUserEqualToAdvertisementOwner = $user->id === $advertisement->user_id;
+        $isUserEqualToModeratorOrAdmin = in_array(
+            $user->role,
+            [
+                UserRolesEnum::ADMIN->value,
+                UserRolesEnum::MODERATOR->value,
+            ]
+        );
+        return ($isUserEqualToAdvertisementOwner || $isUserEqualToModeratorOrAdmin);
     }
 
     /**
@@ -52,7 +60,15 @@ class AdvertisementPolicy
      */
     public function delete(User $user, Advertisement $advertisement): bool
     {
-        return $user->id === $advertisement->user_id;
+        $isUserEqualToAdvertisementOwner = $user->id === $advertisement->user_id;
+        $isUserEqualToModeratorOrAdmin = in_array(
+            $user->role,
+            [
+                UserRolesEnum::ADMIN->value,
+                UserRolesEnum::MODERATOR->value,
+            ]
+        );
+        return ($isUserEqualToAdvertisementOwner || $isUserEqualToModeratorOrAdmin);
     }
 
     /**

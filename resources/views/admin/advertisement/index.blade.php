@@ -14,7 +14,7 @@
                                     <small>
                                         <a
                                             class="link-info link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
-                                            href="{{ route('advertisement.show', $advertisement->id) }}">
+                                            href="{{ route('admin.advertisement.show', $advertisement->id) }}">
                                             [Details of ID: {{ $advertisement->id }}]
                                         </a>
                                     </small>
