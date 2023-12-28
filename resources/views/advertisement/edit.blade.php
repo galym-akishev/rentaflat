@@ -31,14 +31,12 @@
                         </div>
                         <div class="form-row mt-2">
                             <label for="description"><b>Description:</b></label>
-                            <input
-                                type="text"
+                            <textarea
                                 name="description"
                                 id="description"
                                 class="form-control"
-                                placeholder=" "
-                                value="{{ $advertisement->description }}"
-                                required/>
+                                maxlength="250"
+                                required>{{ $advertisement->description }}</textarea>
                         </div>
                         <div class="form-row mt-2">
                             <label for="amenities"><b>Amenities:</b></label>
