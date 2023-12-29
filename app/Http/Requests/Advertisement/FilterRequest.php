@@ -22,9 +22,9 @@ class FilterRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => 'string',
-            'description' => 'string',
-            'price' => 'integer',
+            'title' => 'string|nullable',
+            'description' => 'string|nullable',
+            'price' => 'integer|nullable',
         ];
     }
 }

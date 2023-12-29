@@ -6,8 +6,8 @@
                 <h4 class="mt-2">Listing of advertisements</h4>
                 <form method="GET" action="{{ route('advertisement.index') }}">
                     <div class="col-sm-6 my-1">
-                        <label class="sr-only" for="title" hidden></label>
                         <div class="form-group mt-1">
+                            <label class="sr-only" for="title" hidden></label>
                             <input
                                 type="text"
                                 class="form-control opacity-50"
@@ -32,7 +32,7 @@
                                    placeholder="Search in prices">
                         </div>
                         <div class="mt-2">
-                            <button type="submit" class="btn bg-black p-2 opacity-50 text-white">Search</button>
+                            <input type="submit" class="btn bg-black p-2 opacity-50 text-white" value="Search" />
                         </div>
                     </div>
                 </form>
