@@ -7,6 +7,7 @@ use App\Enums\PublishedStatusEnum;
 use App\Http\Filters\AdvertisementFilter;
 use App\Models\Advertisement;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Facades\DB;
 
 class Service
 {
@@ -42,16 +43,22 @@ class Service
 
     public function destroy(Advertisement $advertisement): void
     {
-        $advertisement
-            ->amenities()
-            ->updateExistingPivot(
-                $advertisement->amenities()->allRelatedIds(),
-                [
-                    'deleted_at' => now()
-                ]
-            );
-        $advertisement->files()->delete();
-        $advertisement->delete();
+        try {
+            DB::beginTransaction();
+            $advertisement
+                ->amenities()
+                ->updateExistingPivot(
+                    $advertisement->amenities()->allRelatedIds(),
+                    [
+                        'deleted_at' => now()
+                    ]
+                );
+            $advertisement->files()->delete();
+            $advertisement->delete();
+            DB::commit();
+        } catch (\Exception $exception) {
+            DB::rollBack();
+        }
     }
 
     public function getArrayOfPublishedStatuses(): array

@@ -8,6 +8,7 @@ use App\Http\Filters\AdvertisementFilter;
 use App\Models\Advertisement;
 use App\Models\Amenity;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Facades\DB;
 
 class Service
 {
@@ -45,59 +46,77 @@ class Service
 
     public function store($data): void
     {
-        $files = $this->getArrayOfFileNames();
-        if (!empty($data['amenities'])) {
-            $advertisement = Advertisement::create($data);
-            $advertisement->amenities()->attach($data['amenities']);
-        } else {
-            $advertisement = Advertisement::create($data);
+        try {
+            DB::beginTransaction();
+            $files = $this->getArrayOfFileNames();
+            if (!empty($data['amenities'])) {
+                $advertisement = Advertisement::create($data);
+                $advertisement->amenities()->attach($data['amenities']);
+            } else {
+                $advertisement = Advertisement::create($data);
+            }
+            $advertisement->files()->createMany($files);
+            $advertisement
+                ->amenities()
+                ->updateExistingPivot(
+                    $advertisement->amenities()->allRelatedIds(),
+                    [
+                        'created_at' => now()
+                    ]
+                );
+            DB::commit();
+        } catch (\Exception $exception) {
+            DB::rollBack();
         }
-        $advertisement->files()->createMany($files);
-        $advertisement
-            ->amenities()
-            ->updateExistingPivot(
-                $advertisement->amenities()->allRelatedIds(),
-                [
-                    'created_at' => now()
-                ]
-            );
     }
 
     public function update(Advertisement $advertisement, $data): void
     {
-        $files = $this->getArrayOfFileNames();
-        $advertisement->update($data);
-        if (!empty($files)) {
-            $advertisement->files()->delete();
-            $advertisement->files()->createMany($files);
+        try {
+            DB::beginTransaction();
+            $files = $this->getArrayOfFileNames();
+            $advertisement->update($data);
+            if (!empty($files)) {
+                $advertisement->files()->delete();
+                $advertisement->files()->createMany($files);
+            }
+            if (!empty($data['amenities'])) {
+                $advertisement->amenities()->sync($data['amenities']);
+            } else {
+                $advertisement->amenities()->sync([]);
+            }
+            $advertisement
+                ->amenities()
+                ->updateExistingPivot(
+                    $advertisement->amenities()->allRelatedIds(),
+                    [
+                        'updated_at' => now()
+                    ]
+                );
+            DB::commit();
+        } catch (\Exception $exception) {
+            DB::rollBack();
         }
-        if (!empty($data['amenities'])) {
-            $advertisement->amenities()->sync($data['amenities']);
-        } else {
-            $advertisement->amenities()->sync([]);
-        }
-        $advertisement
-            ->amenities()
-            ->updateExistingPivot(
-                $advertisement->amenities()->allRelatedIds(),
-                [
-                    'updated_at' => now()
-                ]
-            );
     }
 
     public function destroy(Advertisement $advertisement): void
     {
-        $advertisement
-            ->amenities()
-            ->updateExistingPivot(
-                $advertisement->amenities()->allRelatedIds(),
-                [
-                    'deleted_at' => now()
-                ]
-            );
-        $advertisement->files()->delete();
-        $advertisement->delete();
+        try {
+            DB::beginTransaction();
+            $advertisement
+                ->amenities()
+                ->updateExistingPivot(
+                    $advertisement->amenities()->allRelatedIds(),
+                    [
+                        'deleted_at' => now()
+                    ]
+                );
+            $advertisement->files()->delete();
+            $advertisement->delete();
+            DB::commit();
+        } catch (\Exception $exception) {
+            DB::rollBack();
+        }
     }
 
     /**
