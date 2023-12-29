@@ -11,6 +11,7 @@ class EditController extends BaseController
     public function __invoke(User $user)
     {
         $this->authorize('update', $user);
+
         $userRoleCases = $this->service->getArrayOfUserRoles();
 
         $advertisementsCount = Advertisement::getAdvertisementsCount();

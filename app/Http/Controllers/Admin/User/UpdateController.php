@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Admin\User;
 
-
 use App\Http\Requests\User\UpdateRequest;
 use App\Models\User;
 

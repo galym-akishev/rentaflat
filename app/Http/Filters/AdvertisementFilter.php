@@ -10,7 +10,6 @@ class AdvertisementFilter extends AbstractFilter
     public const DESCRIPTION = 'description';
     public const PRICE = 'price';
 
-
     protected function getCallbacks(): array
     {
         return [

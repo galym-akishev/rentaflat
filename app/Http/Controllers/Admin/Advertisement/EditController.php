@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Admin\Advertisement;
 
-use App\Enums\PublishedStatusEnum;
 use App\Models\Advertisement;
 use App\Models\Amenity;
 use App\Models\User;
@@ -17,7 +16,7 @@ class EditController extends BaseController
         $usersCount = User::getUsersCount();
         $amenitiesCount = Amenity::getAmenitiesCount();
 
-        $publishedStatusesEnum = array_column(PublishedStatusEnum::cases(), 'value');
+        $publishedStatusesEnum = $this->service->getArrayOfPublishedStatuses();
 
         return view(
             'admin.advertisement.edit',

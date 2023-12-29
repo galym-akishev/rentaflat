@@ -38,7 +38,7 @@ Route::group(['namespace' => 'Advertisement'], function () {
 
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'admin'], function () {
     Route::group(['namespace' => 'Advertisement'], function () {
-        Route::get('/advertisement', 'IndexController')
+        Route::get('/advertisements', 'IndexController')
             ->name('admin.advertisement.index');
         Route::get('/advertisements/{advertisement}', 'ShowController')
             ->name('admin.advertisement.show');
@@ -66,13 +66,13 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'admi
             ->name('admin.amenity.delete');
     });
     Route::group(['namespace' => 'User'], function () {
-        Route::get('/user', 'IndexController')
+        Route::get('/users', 'IndexController')
             ->name('admin.user.index');
-        Route::get('/user/{user}', 'ShowController')
+        Route::get('/users/{user}', 'ShowController')
             ->name('admin.user.show');
-        Route::get('/user/{user}/edit', 'EditController')
+        Route::get('/users/{user}/edit', 'EditController')
             ->name('admin.user.edit');
-        Route::patch('/user/{user}', 'UpdateController')
+        Route::patch('/users/{user}', 'UpdateController')
             ->name('admin.user.update');
     });
 });

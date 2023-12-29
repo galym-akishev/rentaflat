@@ -3,9 +3,7 @@
 namespace App\Http\Controllers\Admin\Amenity;
 
 use App\Http\Requests\Amenity\UpdateRequest;
-use App\Models\Advertisement;
 use App\Models\Amenity;
-use App\Models\User;
 
 class UpdateController extends BaseController
 {

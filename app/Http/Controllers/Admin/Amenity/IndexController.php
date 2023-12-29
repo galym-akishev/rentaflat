@@ -2,9 +2,7 @@
 
 namespace App\Http\Controllers\Admin\Amenity;
 
-use App\Constants\PaginationConstants;
-use App\Http\Filters\AmenityFilter;
-use App\Http\Requests\Advertisement\FilterRequest;
+use App\Http\Requests\Amenity\FilterRequest;
 use App\Models\Advertisement;
 use App\Models\Amenity;
 use App\Models\User;
@@ -15,8 +13,8 @@ class IndexController extends BaseController
     {
         $data = $request->validated();
 
-        $filter = app()->make(AmenityFilter::class, ['queryParams' => array_filter($data)]);
-        $amenities = Amenity::filter($filter)->paginate(PaginationConstants::AMENITIES_PER_PAGE);
+        $filter = $this->service->makeFilterOnData($data);
+        $amenities = $this->service->getPaginatedAmenitiesWithFilter($filter);
 
         $advertisementsCount = Advertisement::getAdvertisementsCount();
         $usersCount = User::getUsersCount();

@@ -2,11 +2,23 @@
 
 namespace App\Services\Admin\Advertisement;
 
+use App\Constants\PaginationConstants;
+use App\Enums\PublishedStatusEnum;
+use App\Http\Filters\AdvertisementFilter;
 use App\Models\Advertisement;
 use Illuminate\Database\Eloquent\Collection;
 
 class Service
 {
+    public function makeFilterOnData(array $data)
+    {
+        return app()->make(AdvertisementFilter::class, ['queryParams' => array_filter($data)]);
+    }
+
+    public function getPaginatedAdvertisementsWithFilter(AdvertisementFilter $filter)
+    {
+        return Advertisement::filter($filter)->paginate(PaginationConstants::ADVERTISEMENTS_PER_PAGE);
+    }
 
     public function getAmenitiesOfAdvertisement(Advertisement $advertisement): Collection
     {
@@ -40,5 +52,10 @@ class Service
             );
         $advertisement->files()->delete();
         $advertisement->delete();
+    }
+
+    public function getArrayOfPublishedStatuses(): array
+    {
+        return array_column(PublishedStatusEnum::cases(), 'value');
     }
 }

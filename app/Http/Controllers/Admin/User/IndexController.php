@@ -2,9 +2,7 @@
 
 namespace App\Http\Controllers\Admin\User;
 
-use App\Constants\PaginationConstants;
-use App\Http\Filters\AdvertisementFilter;
-use App\Http\Requests\Advertisement\FilterRequest;
+use App\Http\Requests\User\FilterRequest;
 use App\Models\Advertisement;
 use App\Models\Amenity;
 use App\Models\User;
@@ -15,8 +13,8 @@ class IndexController extends BaseController
     {
         $data = $request->validated();
 
-        $filter = app()->make(AdvertisementFilter::class, ['queryParams' => array_filter($data)]);
-        $users = User::filter($filter)->paginate(PaginationConstants::USERS_PER_PAGE);
+        $filter = $this->service->makeFilterOnData($data);
+        $users = $this->service->getPaginatedUsersWithFilter($filter);
 
         $advertisementsCount = Advertisement::getAdvertisementsCount();
         $usersCount = User::getUsersCount();

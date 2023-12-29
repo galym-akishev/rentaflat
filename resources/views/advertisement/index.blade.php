@@ -5,38 +5,34 @@
             <div class="col-12">
                 <h4 class="mt-2">Listing of advertisements</h4>
                 <form method="GET" action="{{ route('advertisement.index') }}">
-                    <div class="col-sm-3 my-1">
+                    <div class="col-sm-6 my-1">
                         <label class="sr-only" for="title" hidden></label>
-                        <div class="input-group">
-                            <div class="input-group-text p-1 opacity-50">
-                                <button type="submit" class="btn btn-info p-2">Search</button>
-                            </div>
-                            <input type="text" class="form-control opacity-50" name="title" id="title"
-                                   placeholder="... title ...">
+                        <div class="form-group mt-1">
+                            <input
+                                type="text"
+                                class="form-control opacity-50"
+                                name="title"
+                                id="title"
+                                placeholder="Search in titles">
                         </div>
-                    </div>
-                </form>
-                <form method="GET" action="{{ route('advertisement.index') }}">
-                    <div class="col-sm-3 my-1">
-                        <label class="sr-only" for="description" hidden></label>
-                        <div class="input-group">
-                            <div class="input-group-text p-1 opacity-50">
-                                <button type="submit" class="btn btn-info p-2">Search</button>
-                            </div>
-                            <input type="text" class="form-control opacity-50" name="description" id="description"
-                                   placeholder="... description ...">
+                        <div class="form-group mt-1" >
+                            <label for="description" hidden></label>
+                            <input type="text"
+                                   class="form-control opacity-50"
+                                   name="description"
+                                   id="description"
+                                   placeholder="Search in descriptions">
                         </div>
-                    </div>
-                </form>
-                <form method="GET" action="{{ route('advertisement.index') }}">
-                    <div class="col-sm-3 my-1">
-                        <label class="sr-only" for="price" hidden></label>
-                        <div class="input-group">
-                            <div class="input-group-text p-1 opacity-50">
-                                <button type="submit" class="btn btn-info p-2">Search</button>
-                            </div>
-                            <input type="text" class="form-control opacity-50" name="price" id="price"
-                                   placeholder="... price ...">
+                        <div class="form-group mt-1" >
+                            <label for="price" hidden></label>
+                            <input type="text"
+                                   class="form-control opacity-50"
+                                   name="price"
+                                   id="price"
+                                   placeholder="Search in prices">
+                        </div>
+                        <div class="mt-2">
+                            <button type="submit" class="btn bg-black p-2 opacity-50 text-white">Search</button>
                         </div>
                     </div>
                 </form>
@@ -53,6 +49,12 @@
                                 </div>
                                 <div>
                                     {{ $advertisement->description }}
+                                </div>
+                                <div class="opacity-50">
+                                    <small>
+                                        <b>Price:</b>
+                                        {{ $advertisement->price }}
+                                    </small>
                                 </div>
                             </li>
                         @endforeach
