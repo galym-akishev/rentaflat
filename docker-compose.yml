@@ -20,6 +20,7 @@ services:
     user: 'www-data:www-data'
     volumes:
       - ./:/var/www/
+      - ./storage:/var/www/storage
     depends_on:
       - db
     container_name: rentaflat_app

@@ -1,1 +1,9 @@
-import * as bootstrap from 'bootstrap';
+import.meta.glob([
+    '../images/*',
+    '../fonts/*',
+    '../plugins/*',
+    '../../public/uploads/**',
+]);
+
+
+import './bootstrap';

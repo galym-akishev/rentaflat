@@ -20,13 +20,15 @@
                                         @if ($loop->first)
                                             <div class="carousel-item active">
                                                 <img class="d-block mx-auto" height="200"
-                                                     src="{{ Vite::asset('public/uploads/'. $file->name) }}"
+{{--                                                     src="{{ url('/public/uploads/'. $file->name) }}"--}}
+                                                     src="{{ url('storage/images/'. $file->name) }}"
                                                      alt="{{ $file->name }}">
                                             </div>
                                         @else
                                             <div class="carousel-item">
                                                 <img class="d-block mx-auto" height="200"
-                                                     src="{{ Vite::asset('public/uploads/'. $file->name) }}"
+{{--                                                     src="{{ url('public/uploads/'. $file->name) }}"--}}
+                                                     src="{{ url('storage/images/'. $file->name) }}"
                                                      alt="{{ $file->name }}">
                                             </div>
                                         @endif
