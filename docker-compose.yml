@@ -31,7 +31,9 @@ services:
       - ./tmp/db:/var/lib/mysql
     environment:
       MYSQL_DATABASE: rentaflat_db
-      MYSQL_ROOT_PASSWORD: root
+      MYSQL_ROOT_PASSWORD: festival567
+      MYSQL_USER: rentaflat_user
+      MYSQL_PASSWORD: festival567
     ports:
       - 8101:3306
     command: mysqld --character-set-server=utf8 --collation-server=utf8_unicode_ci
