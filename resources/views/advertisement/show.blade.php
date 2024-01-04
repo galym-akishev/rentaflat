@@ -20,15 +20,13 @@
                                         @if ($loop->first)
                                             <div class="carousel-item active">
                                                 <img class="d-block mx-auto" height="200"
-{{--                                                     src="{{ url('/public/uploads/'. $file->name) }}"--}}
-                                                     src="{{ url('storage/images/'. $file->name) }}"
+                                                     src="{{ asset('public/storage/ad_images/'. $file->name) }}"
                                                      alt="{{ $file->name }}">
                                             </div>
                                         @else
                                             <div class="carousel-item">
                                                 <img class="d-block mx-auto" height="200"
-{{--                                                     src="{{ url('public/uploads/'. $file->name) }}"--}}
-                                                     src="{{ url('storage/images/'. $file->name) }}"
+                                                     src="{{ asset('public/storage/ad_images/'. $file->name) }}"
                                                      alt="{{ $file->name }}">
                                             </div>
                                         @endif

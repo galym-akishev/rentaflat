@@ -9,6 +9,7 @@ use App\Models\Advertisement;
 use App\Models\Amenity;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class Service
 {
@@ -128,7 +129,11 @@ class Service
         if (request()->file('files')) {
             foreach (request()->file('files') as $key => $file) {
                 $file_name = time() . rand(1, 99) . '.' . $file->extension();
-                $file->move(public_path('uploads'), $file_name);
+//                $file->move(public_path('uploads'), $file_name);
+//                $file->store('images');
+//                $files[]['name'] = $file_name;
+                $path = $file->storePubliclyAs('public/ad_images', $file_name);
+//                Storage::put('images', $file);
                 $files[]['name'] = $file_name;
             }
         }

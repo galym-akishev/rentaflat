@@ -17,7 +17,6 @@ services:
     build:
       context: .
       dockerfile: _docker/app/Dockerfile
-    user: 'www-data:www-data'
     volumes:
       - ./:/var/www/
       - ./storage:/var/www/storage
