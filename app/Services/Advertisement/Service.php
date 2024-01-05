@@ -129,7 +129,7 @@ class Service
         if (request()->file('files')) {
             foreach (request()->file('files') as $key => $file) {
                 $file_name = time() . rand(1, 99) . '.' . $file->extension();
-                $file->storePubliclyAs('public/ad_images', $file_name);
+                $file->storePubliclyAs('public/images', $file_name);
                 $files[]['name'] = $file_name;
             }
         }
