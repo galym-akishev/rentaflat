@@ -25,5 +25,5 @@ RUN curl -sS https://getcomposer.org/installer | php -- \
 
 WORKDIR /var/www
 
-COPY composer.lock composer.lock
+COPY composer.lock composer.lock ./
 RUN composer install
