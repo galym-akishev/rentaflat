@@ -23,4 +23,6 @@ RUN curl -sS https://getcomposer.org/installer | php -- \
     --filename=composer \
     --install-dir=/usr/local/bin
 
+RUN composer install
+
 WORKDIR /var/www
