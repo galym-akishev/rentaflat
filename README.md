@@ -52,5 +52,4 @@
 ``` cd /var/www/public ``` <br>
 ``` ln -s ../storage/app/public storage ```
 
-### Step-10: Open browser at
-``` [localhost:8086](http://localhost:8086) ```
+### Step-10: Open browser at [localhost:8086](http://localhost:8086)
