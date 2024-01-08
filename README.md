@@ -11,7 +11,7 @@
 ----------------------------------------------------
 ## How to run the project via docker:
 
-### Step 0: Pre-requisite - Docker must be installed
+### Step 0: Pre-requisite - `Docker` must be installed
 
 ### Step 1: Clone the repository to a folder:
 ``` git clone https://github.com/galym-akishev/rentaflat.git ``` 
