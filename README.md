@@ -53,4 +53,4 @@
 ``` ln -s ../storage/app/public storage ```
 
 ### Step-10: Open browser at
-``` http://localhost:8086 ```
+``` [localhost:8086](http://localhost:8086) ```
