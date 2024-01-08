@@ -25,5 +25,4 @@ RUN curl -sS https://getcomposer.org/installer | php -- \
 
 WORKDIR /var/www
 
-RUN composer install
-RUN php artisan key:generate
+RUN apt-get update && apt-get install -y npm
