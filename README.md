@@ -23,31 +23,31 @@
 ``` docker-compose up -d ```
 
 ### Step-4: Install PHP dependencies
-``` docker exec -it rentaflat_app bash ```
+``` docker exec -it rentaflat_app bash ``` <br>
 ``` composer install ```
 
 ### Step-4: Generate Laravel key:
-``` docker exec -it rentaflat_app bash ```
+``` docker exec -it rentaflat_app bash ``` <br>
 ``` php artisan key:generate ```
 
 ### Step-5: Build the docker image
 ``` docker-compose up --build --no-recreate -d ```
 
 ### Step-6: Enter the vite container
-``` docker exec -it rentaflat_vite sh ```
-``` npm i ```
-``` npm run build (npm run dev) ```
+``` docker exec -it rentaflat_vite sh ``` <br>
+``` npm i ``` <br>
+``` npm run build (npm run dev) ``` <br>
 
 ### Step-7: Make the build
 ``` docker-composer up --build ```
 
 ### Step-8: Migrate the database and seed database with initial data
-``` docker exec -it rentaflat_app bash ```
-``` php artisan migrate ```
-``` php artisan migrate:fresh ```
-``` php artisan migrate --seed ```
+``` docker exec -it rentaflat_app bash ``` <br>
+``` php artisan migrate ``` <br>
+``` php artisan migrate:fresh ``` <br>
+``` php artisan migrate --seed ``` <br>
 
 ### Step-9: Make symlink: must be run inside of the docker container using relative path
-``` docker exec -it rentaflat_vite sh ```
-``` cd /var/www/public ```
+``` docker exec -it rentaflat_vite sh ``` <br>
+``` cd /var/www/public ``` <br>
 ``` ln -s ../storage/app/public storage ```
