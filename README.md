@@ -39,7 +39,7 @@
 ``` npm run build (npm run dev) ``` <br>
 
 ### Step-7: Make the build
-``` docker-composer up --build ```
+``` docker-compose up --build ```
 
 ### Step-8: Migrate the database and seed database with initial data
 ``` docker exec -it rentaflat_app bash ``` <br>
@@ -51,3 +51,6 @@
 ``` docker exec -it rentaflat_vite sh ``` <br>
 ``` cd /var/www/public ``` <br>
 ``` ln -s ../storage/app/public storage ```
+
+### Step-10: Open browser at
+``` http://localhost:8086 ```
