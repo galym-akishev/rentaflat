@@ -5,8 +5,8 @@
             <div class="col-12">
                 <div class="section-title">
                     <h1>Welcome to Rentaflat!</h1>
-                    <p>Rentaflat is a portfolio project implemented on Laravel/PHP</p>
-                    <p>Rentaflat - a rental properties listings</p>
+                    <p>Rentaflat is a web application for rental advertisements.</p>
+                    <p>Technologies used: PHP, Laravel, MySQL, Docker, Vite, Bootstrap, HTML, CSS</p>
                 </div>
             </div>
         </div>
