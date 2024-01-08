@@ -29,8 +29,6 @@
 ``` git clone https://github.com/galym-akishev/rentaflat.git ``` 
 
 ### Step-2: Give permission to the specific folders (change folder to `rentaflat` and run):
-``` sudo chmod -R 777 storage && sudo chmod -R 777 bootstrap/cache ``` <br>
-``` or ``` <br>
 ``` chmod -R 777 storage && chmod -R 777 bootstrap/cache ```
 
 ### Step-3: Run the docker container (inside of the folder `rentaflat` run):
