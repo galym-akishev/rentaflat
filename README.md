@@ -3,7 +3,7 @@
 ## Description
 `Rentaflat` is a web application for rental advertisements.
 
-# Technologies used:
+## Technologies used:
 - PHP
 - Laravel
 - MySQL
