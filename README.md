@@ -3,12 +3,21 @@
 ## Description
 `Rentaflat` is a web application for rental advertisements.
 
+# Technologies used:
+- PHP
+- Laravel
+- MySQL
+- Docker
+- Vite
+- Bootstrap
+- HTML
+- CSS
+
 ## User roles
 - `Administrator` - the user with super privileges
 - `Moderator` - a user who can change advertisement status (published/not-published)
 - `Registered User` - a user with an account who can create a rental advertisement
 - `Non-registered user` - a user can only browse rental advertisements
-
 
 ## User credentials:
 - `Administrator` - login: admin@example.com, password:123456789
