@@ -13,6 +13,9 @@
 - HTML
 - CSS
 
+## Demo:
+<img src="/resources/videos/screencast.gif" alt="Demo">
+
 ## User roles
 - `Administrator` - the user with super privileges
 - `Moderator` - a user who can change advertisement status (published/not-published)
