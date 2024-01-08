@@ -4,14 +4,7 @@
 `Rentaflat` is a web application for rental advertisements.
 
 ## Technologies used:
-- PHP
-- Laravel
-- MySQL
-- Docker
-- Vite
-- Bootstrap
-- HTML
-- CSS
+- `PHP`, `Laravel`, `MySQL`, `Docker`, `Vite`, `Bootstrap`, `HTML`, `CSS`
 
 ## Demo:
 <img src="/resources/videos/screencast.gif" alt="Demo">
