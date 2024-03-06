@@ -25,6 +25,8 @@ services:
     depends_on:
       - db
     container_name: rentaflat_app
+    extra_hosts:
+      - host.docker.internal:host-gateway
 
   db:
     image: mysql:8.0

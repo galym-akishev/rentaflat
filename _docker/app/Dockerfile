@@ -23,4 +23,10 @@ RUN curl -sS https://getcomposer.org/installer | php -- \
     --filename=composer \
     --install-dir=/usr/local/bin
 
+# Xdebug
+RUN pecl install xdebug \
+    && docker-php-ext-enable xdebug
+
+COPY ./_docker/app/xdebug.ini /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+
 WORKDIR /var/www
