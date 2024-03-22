@@ -19,7 +19,7 @@
 - `Administrator` - login: admin@example.com, password:123456789
 - `Moderator` - login: moderator@example.com, password:123456789
 - `User1` - login: user1@example.com, password:123456789
-- `User2` - login: moderator@example.com, password:123456789
+- `User2` - login: user2@example.com, password:123456789
 
 ## How to run the project via docker:
 
